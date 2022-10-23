@@ -26,6 +26,11 @@
 }
 
 #image {
-    width: 45pt;  /* Define photo's width */
-    height: 30pt; /* Define photo's height */
+    position: absolute;
+    
+    top: 10pt;
+    bottom: 30pt;
+    right: 10pt;
+    width: 45pt;
+    height: 40pt;
 }
