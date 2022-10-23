@@ -1,4 +1,5 @@
 console.log("We see this website: " + document.location.href);
+
 const legalWebsites = ["https://www.forever21.com",
     "https://www.adidas.com",
     "https://www.thereformation.com",
