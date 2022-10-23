@@ -20,7 +20,7 @@ function popup() {
     // Create Goji icon image
     const image = document.createElement("img");
     image.id = "image";
-    image.src = chrome.runtime.getURL("icons/goji-title.png");
+    image.src = chrome.runtime.getURL("icons/goji-icon.png");
     image.alt = "Goji icon";
 
     // Create overlay
@@ -48,7 +48,7 @@ function popup() {
         } else {
             href = mylink.href;
         }
-        window.open(href, "Store Name", 'width=400,height=200,scrollbars=yes');
+        window.open(href, "Goji Store Score", 'width=400,height=500,scrollbars=yes');
         return false;
     }
 }
