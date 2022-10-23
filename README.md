@@ -1,20 +1,20 @@
-# goji-chrome-extension
-Seeding Sustainability.
+# Goji Chrome Extension
+Seeding Sustainability. A Chrome extensions that helps you see how sustainable your favorite fashion brands are!
+
+Learn more about this amazing platform here at [getgoji.tech](http://getgoji.tech)
+
+# Installation and Usage
+
+**Coming Soon:** This addon will be available to download from the Chrome Web Store soon!
+
+1. Clone or download this repository and extract the contents
+2. In your Chrome-based browser (Google Chrome, Microsoft Edge, etc.), navigate to `chrome://extensions`
+3. Enable Developer Mode by clicking the toggle switch next to Developer mode.
+4. Click the Load unpacked button and select the extension directory.
+5. Navigate to your favorite brand's website and see how they rank on Goji!
 
 
-Our mission: to make the fashion industry more sustainable.
+# Credits
+Extension code: Andrew Kuhn & Kenneth Yang
 
-
-Sustainability in the fashion industry is becoming a more relevant and well known issue. There are many new companies popping up with a central mission of sustainability, however these tend to be more expensive and might not be as accessible to those on a budget. 
-
-As college students who lack unlimited choices of companies to shop from, we created a tool to help customers compare scores between the brands they are already shopping from. This encourages customers to choose more sustainable options by easily providing them insight into how sustainable these companies are by comparing them against other fashion companies. As a Google Chrome Extension, Gogi will follow you through all of your online shopping, at just a click away!
-
-Goji even allows you to customize which categories specifically mean more to you, as well as providing a comprehensive percentile ranking. By scoring companies based on percentiles, each company's scores are calculated in relation to each other, incentivising companies to increase their sustainability and rise among the percentile ranks. By ranking companies with respect to each other, this eliminates the need to establish what levels are "good" and "bad", as we recognize that sustainability is a complex issue with many factors, and a hard factor to define objectively.
-
-The categories to customize rankings are as follows:
-Carbon Emissions
-Water Usage
-Ethical Sourcing
-Labor Rights
-Transparency
-DEI
+[Data extraction and processing](https://github.com/jasmine-schoch/goji-data-analysis): Jasmine Schoch & Virginia Wang
