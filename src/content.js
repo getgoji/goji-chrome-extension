@@ -1,14 +1,14 @@
-console.log("We see this website: " + document.location.href);
-const legalWebsites = [
-    "https://www.forever21.com",
-    "https://www.adidas.com",
-    "https://www.thereformation.com",
-    "https://www.sears.com",
-    "https://www.zara.com",
-    "http://example.com"];
+const legalWebsites = {
+    "Forever 21": "https://www.forever21.com",
+    "Adidas Group": "https://www.adidas.com",
+    "Reformation": "https://www.thereformation.com",
+    "Gucci": "https://www.gucci.com",
+    "Kohl's": "https://www.kohls.com/"
+};
 
-legalWebsites.forEach(url => {
+Object.entries(legalWebsites).forEach(([name, url]) => {
     if (document.location.href.includes(url)) {
+        chrome.storage.local.set({ 'current_website': name});
         popup();
     }
 });
@@ -38,18 +38,18 @@ function popup() {
         popup(chrome.runtime.getURL("components/websitestatus.html"));
     });
 
-    function popup(mylink) { 
-        if (! window.focus) {
-            return true; 
+    function popup(mylink) {
+        if (!window.focus) {
+            return true;
         }
-        var href; 
-        if (typeof(mylink) == 'string') {
-            href=mylink; 
+        var href;
+        if (typeof (mylink) == 'string') {
+            href = mylink;
         } else {
-            href=mylink.href; 
+            href = mylink.href;
         }
-        window.open(href, "Store Name", 'width=400,height=200,scrollbars=yes'); 
-        return false; 
+        window.open(href, "Store Name", 'width=400,height=200,scrollbars=yes');
+        return false;
     }
 }
 
