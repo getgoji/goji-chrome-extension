@@ -20,7 +20,7 @@ function popup() {
     // Create Goji icon image
     const image = document.createElement("img");
     image.id = "image";
-    image.src = chrome.runtime.getURL("icons/icon-32.png");
+    image.src = chrome.runtime.getURL("icons/goji-title.png");
     image.alt = "Goji icon";
 
     // Create overlay

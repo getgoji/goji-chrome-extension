@@ -27,38 +27,45 @@ fetch("../percentile.json").then(res => res.json()).then((data) => {
     const currentWebsiteIndex = data["columns"].indexOf(currentWebsite);
 
     // For each favorited data category, print the percentile and category name
-    for (let i = 0; i < 3; i++) {
-        const categoryIndex = preferencesSorted[i];
-        const thisCategory = data["data"][categoryIndex][currentWebsiteIndex];
-        categoryPercentiles[i].innerHTML = thisCategory;
-        categoryNames[i].innerHTML = categoryNamesText[categoryIndex];
+    let percentileTotal = 0;
+    let personalizedPercentileTotal = 0;
+    for (let i = 0; i < 6; i++) {
+        const thisCategory = data["data"][i][currentWebsiteIndex];
+        percentileTotal += thisCategory;
+        if (preferencesSorted.includes(i)) {
+            personalizedPercentileTotal += thisCategory;
+            categoryPercentiles[i].innerHTML = thisCategory;
+            categoryNames[i].innerHTML = categoryNamesText[i];
+        }
     }
+    let overallGojiScorePercentile = percentileTotal / 6;
+    printGojiScore(overallGojiScorePercentile, "goji_score1");
+    let personalizedGojiScorePercentile = personalizedPercentileTotal / 3;
+    printGojiScore(personalizedGojiScorePercentile, "goji_score2");
 });
 
-const overallGojiScorePercentile = 85; //TEMP VAL
-printGojiScore(overallGojiScorePercentile, "goji_score1");
-const personalizedGojiScorePercentile = 20; //TEMP VAL
-printGojiScore(personalizedGojiScorePercentile, "goji_score2");
+
+
 
 
 
 function printGojiScore(gojiScorePercentile, divName) {
-    const numBerriesPrinted = 0;
+    let numBerriesPrinted = 0;
     const overallGojiScore = document.getElementById(divName);
     while (numBerriesPrinted < 5) {
         const image = document.createElement("img");
         image.id = "image";
         image.alt = "Goji icon";
         if (gojiScorePercentile > 20) {
-            image.src = chrome.runtime.getURL("icons/goji-icon.png");
+            image.src = chrome.runtime.getURL("icons/sad-goji.png");
             gojiScorePercentile -= 20;
         } else if (gojiScorePercentile > 10){
             image.src = chrome.runtime.getURL("icons/half-goji.png");
             gojiScorePercentile -= 10;
         } else {
-            image.src = chrome.runtime.getURL("icons/sad-goji.png");
+            image.src = chrome.runtime.getURL("icons/really-sad-goji.png");
         }
         overallGojiScore.append(image);
-        numBerriesPrinted++;
+        numBerriesPrinted += 1;
     }
 }
