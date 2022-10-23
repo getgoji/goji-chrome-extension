@@ -1,2 +1,5 @@
 # goji-chrome-extension
-Seeding Sustainability
+Seeding Sustainability.
+
+Background:
+
