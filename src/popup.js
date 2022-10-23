@@ -1,13 +1,14 @@
 // User preferences local copy
 let userPreferences;
 const categories = document.querySelectorAll('input[type="checkbox"]');
+const submitButton = document.getElementById("submit");
 
 // Handle on load stuff
 document.addEventListener("DOMContentLoaded", () => {
     // Load previous settings (or set new ones)
     chrome.storage.sync.get(['preferences'], (storage) => {
         if (storage.preferences == undefined || storage.preferences.length < 3) {
-            userPreferences = [0, 1, 2];
+            userPreferences = [2, 1, 0];
             chrome.storage.sync.set({ 'preferences': userPreferences });
         } else {
             userPreferences = storage.preferences;
@@ -22,6 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
             togglePreference(i);
         });
     }
+
+    submitButton.addEventListener('click', () => {
+        chrome.storage.sync.set({ 'preferences': userPreferences });
+    });
 });
 
 
@@ -31,16 +36,10 @@ function togglePreference(category) {
     if (userPreferences.includes(category)) {
         userPreferences.splice(userPreferences.indexOf(category), 1);
     } else {
-        // Add category and remove last one
-        userPreferences.pop();
-        userPreferences.unshift(category);
+        userPreferences.push(category);
     }
 
-    // Save settings
-    chrome.storage.sync.set({ 'preferences': userPreferences });
-
-    // Update UI
-    updateToggles();
+    submitButton.disabled = userPreferences.length != 3;
 }
 
 // Update toggle UI based on user preferences
