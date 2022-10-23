@@ -1,0 +1,19 @@
+body {
+    width: 300pt;
+    height: 1250pt;
+    border-radius: 30pt 30pt 30pt 30pt;
+}
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40pt;
+}
+
+h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30pt;
+}
+
+#checkboxes_text {
+    font-size: 20pt;
+}
