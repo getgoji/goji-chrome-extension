@@ -54,7 +54,7 @@ function popup() {
         } else {
             href = mylink.href;
         }
-        window.open(href, "Goji Store Score", 'width=400,height=500,scrollbars=yes');
+        window.open(href, "Goji Store Score", 'width=400,height=600,scrollbars=yes,location=0');
         return false;
     }
 }
