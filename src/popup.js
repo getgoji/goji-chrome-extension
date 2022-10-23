@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Load previous settings (or set new ones)
     chrome.storage.sync.get(['preferences'], (storage) => {
         if (storage.preferences == undefined || storage.preferences.length < 3) {
-            userPreferences = [2, 1, 0];
+            userPreferences = [0, 1, 2];
             chrome.storage.sync.set({ 'preferences': userPreferences });
         } else {
             userPreferences = storage.preferences;

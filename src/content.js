@@ -1,15 +1,14 @@
-console.log("We see this website: " + document.location.href);
+const legalWebsites = {
+    "Forever 21": "https://www.forever21.com",
+    "Adidas Group": "https://www.adidas.com",
+    "Reformation": "https://www.thereformation.com",
+    "Gucci": "https://www.gucci.com",
+    "Kohl's": "https://www.kohls.com/"
+};
 
-const legalWebsites = ["https://www.forever21.com",
-    "https://www.adidas.com",
-    "https://www.thereformation.com",
-    "https://www.sears.com",
-    "https://www.zara.com",
-    "http://example.com"];
-
-legalWebsites.forEach(url => {
+Object.entries(legalWebsites).forEach(([name, url]) => {
     if (document.location.href.includes(url)) {
-        console.log("Did the popup work?");
+        chrome.storage.local.set({ 'current_website': name});
         popup();
     }
 });
@@ -21,7 +20,7 @@ function popup() {
     // Create Goji icon image
     const image = document.createElement("img");
     image.id = "image";
-    image.src = chrome.runtime.getURL("icons/icon-32.png");
+    image.src = chrome.runtime.getURL("icons/goji-title.png");
     image.alt = "Goji icon";
 
     // Create overlay
@@ -31,4 +30,26 @@ function popup() {
 
     // Inject overlay
     html.append(overlay);
+
+    const button = document.getElementById("overlay");
+
+    button.addEventListener('click', function handleClick() {
+        console.log('element clicked');
+        popup(chrome.runtime.getURL("components/websitestatus.html"));
+    });
+
+    function popup(mylink) {
+        if (!window.focus) {
+            return true;
+        }
+        var href;
+        if (typeof (mylink) == 'string') {
+            href = mylink;
+        } else {
+            href = mylink.href;
+        }
+        window.open(href, "Store Name", 'width=400,height=200,scrollbars=yes');
+        return false;
+    }
 }
+

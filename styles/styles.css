@@ -6,7 +6,6 @@
     margin-right: 0px;
     margin-top: 10%;
 
-    display: block; /* Hidden by default */
     width: 65pt; /* Full width (cover the whole page) */
     height: 50pt; /* Full height (cover the whole page) */
     border-radius: 10pt 0 0 10pt;
@@ -18,19 +17,18 @@
     bottom: 0;
 
     /*background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    background-color: orange;
+    background-color: #ffc4bc;
+    border-color: black;
+    border-style: solid;
+    border-width: 2pt 0 2pt 2pt;
 
     /* Place at top */
     z-index: 9999999;
     cursor: pointer; /* Add a pointer on hover */
-}
 
-#image {
-    position: absolute;
-    
-    top: 10pt;
-    bottom: 30pt;
-    right: 10pt;
-    width: 45pt;
-    height: 40pt;
+    display: flex;
+    justify-content: center;
 }
+ #image {
+    padding: 10pt;
+ }

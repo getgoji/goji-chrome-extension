@@ -15,10 +15,11 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "icons/icon-16.png",
-                "icons/icon-32.png",
-                "icons/icon-48.png",
-                "icons/icon-128.png"
+                "icons/goji-icon.png",
+                "icons/goji-title.png",
+                "icons/half-goji.png",
+                "icons/sad-goji.png",
+                "components/websitestatus.html"
             ],
             "matches": [
                 "<all_urls>"
