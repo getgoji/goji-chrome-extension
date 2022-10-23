@@ -17,3 +17,7 @@
 #cat2 {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
+#category_name {
+    display: inline;
+}
