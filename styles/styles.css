@@ -24,3 +24,8 @@
     z-index: 9999999;
     cursor: pointer; /* Add a pointer on hover */
 }
+
+#image {
+    width: 45pt;  /* Define photo's width */
+    height: 30pt; /* Define photo's height */
+}
