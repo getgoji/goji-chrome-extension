@@ -4,10 +4,12 @@ body {
 
 #goji_score1 {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15pt;
 }
 
 #goji_score2 {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15pt;
 }
 
 #category {

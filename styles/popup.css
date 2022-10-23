@@ -1,13 +1,22 @@
 body {
     width: 300pt;
-    height: 1250pt;
+    height: 425pt;
     background-color: #ffc4bc;
 }
 
+#gojiTitle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100pt;
+    height: 100pt;
+}
+/*
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 40pt;
 }
+*/
 
 h2 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

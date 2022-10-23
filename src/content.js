@@ -1,10 +1,16 @@
 const legalWebsites = {
+    "A&F": "https://www.abercrombie.com",
+    "American Eagle Outfitters": "https://www.ae.com",
+    "Allbirds": "https://www.allbirds.com",
+    "Amazon": "https://www.amazon.com",
     "Forever 21": "https://www.forever21.com",
     "Adidas Group": "https://www.adidas.com",
+    "Lululemon": "https://shop.lululemon.com",
     "Reformation": "https://www.thereformation.com",
     "Gucci": "https://www.gucci.com",
     "Kohl's": "https://www.kohls.com/"
 };
+// "URBN","Besteller","Boohoo","Boyish Jeans","Brother Vellies","Burberry","C&A","Christy Dawn","Eileen Fisher","Everlane","Forever 21","Fashion Nova","Filippa K","Gap Inc.","Girlfriend Collective","Global Brands Group","Gucci","H&M Group","Inditex","J. Crew Inc.","JCPenney","Kohl's","Levi Strauss","Mara Hoffman","M&S","Missguided","Mothercare","MUD Jeans","Next","Nike","Nisolo","Patagonia","Primark","PVH","Ralph Lauren","Reformation","Ross","SHEIN","Stella McCartney","Target","The Children's Place","The Edinburgh Woollen Mill","TJX","Under Armour","Fast Retailing (Uniqlo)","VEJA","VF Corp","Victoria's Secret & Co","Walmart","Zalando"
 
 Object.entries(legalWebsites).forEach(([name, url]) => {
     if (document.location.href.includes(url)) {
