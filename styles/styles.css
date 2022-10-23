@@ -1,14 +1,26 @@
 #overlay {
     position: fixed; /* Sit on top of the page content */
+
+    /* Move to right side (and down-ish) */
+    margin-left: auto;
+    margin-right: 0px;
+    margin-top: 10%;
+
     display: block; /* Hidden by default */
-    width: 7.5%; /* Full width (cover the whole page) */
-    height: 10%; /* Full height (cover the whole page) */
+    width: 65pt; /* Full width (cover the whole page) */
+    height: 50pt; /* Full height (cover the whole page) */
+    border-radius: 10pt 0 0 10pt;
+
+    /* Stretches to fill entire region */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+
     /*background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     background-color: orange;
-    z-index: 9999999; /* Specify a stack order in case you're using a different order for other elements */
+
+    /* Place at top */
+    z-index: 9999999;
     cursor: pointer; /* Add a pointer on hover */
 }

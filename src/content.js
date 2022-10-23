@@ -1,15 +1,15 @@
 console.log("We see this website: " + document.location.href);
-const legalWebsites = ["https://www.forever21.com/*",
-                       "https://www.adidas.com/us/*",
-                       "https://www.thereformation.com/*",
-                       "https://www.sears.com/*",
-                       "https://www.zara.com/us/*",
-                       "http://example.com/"];
+const legalWebsites = ["https://www.forever21.com",
+                       "https://www.adidas.com",
+                       "https://www.thereformation.com",
+                       "https://www.sears.com",
+                       "https://www.zara.com",
+                       "http://example.com"];
 
 legalWebsites.forEach(checkIfClothingBrand);
 
 function checkIfClothingBrand(url) {
-    if (url.includes(document.location.href)) {
+    if (document.location.href.includes(url)) {
         console.log("Did the popup work?");
         popup(document.location.href, 'notes');
     }
