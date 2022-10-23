@@ -13,6 +13,7 @@
         {
             "matches": ["<all_urls>"],
             "js": ["src/content.js"],
+            "css": ["styles/styles.css"],
             "run_at": "document_end"
         }
     ]
