@@ -1,0 +1,40 @@
+name: Reformat and Lint
+
+on:
+  pull_request:
+
+  workflow_dispatch:
+
+concurrency:
+  group: "reformat-and-lint"
+  cancel-in-progress: true
+
+jobs:
+  reformat-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎 Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.WORKFLOW_COMMIT }}
+
+      - name: 📦 Setup Node.js and caching
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
+          cache: "npm"
+
+      - name: 🔨 Install
+        run: npm i
+
+      - name: 🧹 Reformat
+        run: npx prettier --write .
+
+      - name: 🚨 Lint
+        run: npx eslint .
+
+      - name: ⬆️ Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Reformat and Lint

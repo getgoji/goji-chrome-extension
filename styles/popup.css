@@ -1,15 +1,15 @@
 body {
-    width: 300pt;
-    height: 425pt;
-    background-color: #ffc4bc;
+  width: 300pt;
+  height: 425pt;
+  background-color: #ffc4bc;
 }
 
 #gojiTitle {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100pt;
-    height: 100pt;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100pt;
+  height: 100pt;
 }
 /*
 h1 {
@@ -19,14 +19,16 @@ h1 {
 */
 
 h2 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 30pt;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 30pt;
 }
 h3 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 20pt;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 20pt;
 }
 
 #checkboxes_text {
-    font-size: 20pt;
+  font-size: 20pt;
 }
