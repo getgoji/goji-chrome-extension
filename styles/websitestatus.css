@@ -1,31 +1,31 @@
 body {
-    background-color: #ffc4bc;
-    text-align: center;
+  background-color: #ffc4bc;
+  text-align: center;
 }
 
 #goji_score1 {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 15pt;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15pt;
 }
 
 #goji_score2 {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 15pt;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15pt;
 }
 
 #category {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 #image {
-    width: 43pt;
-    height: 33pt;
+  width: 43pt;
+  height: 33pt;
 }
 
 #category_percentile {
-    display: inline-block;
+  display: inline-block;
 }
 
 #category_name {
-    display: inline-block;
+  display: inline-block;
 }
