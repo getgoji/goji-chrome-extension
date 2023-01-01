@@ -1,5 +1,9 @@
 # Goji Chrome Extension
 
+[![CodeQL](https://github.com/getgoji/goji-chrome-extension/actions/workflows/codeql.yml/badge.svg)](https://github.com/getgoji/goji-chrome-extension/actions/workflows/codeql.yml)
+
+[![Reformat and Lint](https://github.com/getgoji/goji-chrome-extension/actions/workflows/reformat-and-lint.yml/badge.svg)](https://github.com/getgoji/goji-chrome-extension/actions/workflows/reformat-and-lint.yml)
+
 Seeding Sustainability. A Chrome extensions that helps you see how sustainable your favorite fashion brands are!
 
 Learn more about this amazing platform here at [getgoji.tech](http://getgoji.tech)
