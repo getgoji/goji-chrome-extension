@@ -1,5 +1,5 @@
 const readCurrentWebsite = async () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         // Set store name
         chrome.storage.local.get(["current_website"], (result) => {
             let currentWebsite = result.current_website;
@@ -11,7 +11,7 @@ const readCurrentWebsite = async () => {
 
 // Load and sort preferences
 const readPreferencesSorted = async () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         chrome.storage.sync.get(['preferences'], (storage) => {
             if (storage.preferences === undefined) {
                 chrome.storage.sync.set({ 'preferences': [0, 1, 2] });
