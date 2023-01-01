@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-Thanks for interest in supporting the development of the Goji Chrome extension! Here's some guidelines to help facilitate contributing to the code base.
+Thanks for interest in supporting the development of the Goji Chrome extension! Here are some guidelines to help facilitate contributing to the code base.
 
 ## What's good to contribute
 
