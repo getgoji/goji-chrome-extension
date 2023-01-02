@@ -75,8 +75,10 @@ async function getData() {
             categoryNamesText[i];
         }
       }
+
       let overallGojiScorePercentile = percentileTotal / 6;
       printGojiScore(overallGojiScorePercentile, "overall-score");
+      
       let personalizedGojiScorePercentile = personalizedPercentileTotal / 3;
       printGojiScore(personalizedGojiScorePercentile, "personalized-score");
     });
@@ -93,7 +95,6 @@ function printGojiScore(gojiScorePercentile, divName) {
   const overallGojiScore = document.getElementById(divName);
   while (numBerriesPrinted < 5) {
     const image = document.createElement("img");
-    image.id = "image";
     image.alt = "Goji icon";
     if (gojiScorePercentile > 20) {
       image.src = chrome.runtime.getURL("icons/sad-goji.png");
