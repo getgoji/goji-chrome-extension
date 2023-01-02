@@ -1,4 +1,8 @@
-const readCurrentWebsite = async () => {
+/**
+ * Pull current website from local storage
+ * @returns {string} Name of current website
+ */
+const getCurrentWebsite = async () => {
   return new Promise((resolve) => {
     // Set store name
     chrome.storage.local.get(["current_website"], (result) => {
@@ -8,27 +12,39 @@ const readCurrentWebsite = async () => {
   });
 };
 
-// Load and sort preferences
-const readPreferencesSorted = async () => {
+/**
+ * Get preferences. Create a default preference if none-exist
+ * @returns {Array[Number]} Preferences list
+ */
+const getPreferencesSorted = async () => {
   return new Promise((resolve) => {
     chrome.storage.sync.get(["preferences"], (storage) => {
       if (storage.preferences === undefined) {
+        // Create a default preference
         chrome.storage.sync.set({ preferences: [0, 1, 2] });
         resolve([0, 1, 2]);
       } else {
+        // Get the preferences and sort them
         resolve(storage.preferences.sort());
       }
     });
   });
 };
-async function getData() {
-  let currentWebsite = await readCurrentWebsite();
-  document.querySelector("#store_name").innerHTML = currentWebsite;
-  let preferencesSorted = await readPreferencesSorted();
 
-  // Get category divs
-  const categoryPercentiles = document.querySelectorAll("#category_percentile");
-  const categoryNames = document.querySelectorAll("#category_name");
+/**
+ * Read data from database
+ */
+async function getData() {
+  // Extract current state
+  let currentWebsite = await getCurrentWebsite();
+  let preferencesSorted = await getPreferencesSorted();
+
+  // Apply webiste name
+  document.getElementById("brand-name").innerHTML = currentWebsite;
+
+  // Get HTML elements
+  const categoryPercentiles = document.querySelectorAll("#category-percentile");
+  const categoryNames = document.querySelectorAll("#category-name");
   const categoryNamesText = [
     "Carbon Emissions",
     "Water Usage",
@@ -38,6 +54,7 @@ async function getData() {
     "Diversity, Equity, & Inclusion",
   ];
 
+  // Extract json data
   fetch("../percentile.json")
     .then((res) => res.json())
     .then((data) => {
@@ -58,19 +75,25 @@ async function getData() {
             categoryNamesText[i];
         }
       }
+
       let overallGojiScorePercentile = percentileTotal / 6;
-      printGojiScore(overallGojiScorePercentile, "goji_score1");
+      printGojiScore(overallGojiScorePercentile, "overall-score");
+
       let personalizedGojiScorePercentile = personalizedPercentileTotal / 3;
-      printGojiScore(personalizedGojiScorePercentile, "goji_score2");
+      printGojiScore(personalizedGojiScorePercentile, "personalized-score");
     });
 }
 
+/**
+ * Draw out Goji score given a percentile and div
+ * @param {Number} gojiScorePercentile integer percentile score
+ * @param {String} divName ID of the category div
+ */
 function printGojiScore(gojiScorePercentile, divName) {
   let numBerriesPrinted = 0;
   const overallGojiScore = document.getElementById(divName);
   while (numBerriesPrinted < 5) {
     const image = document.createElement("img");
-    image.id = "image";
     image.alt = "Goji icon";
     if (gojiScorePercentile > 20) {
       image.src = chrome.runtime.getURL("icons/sad-goji.png");

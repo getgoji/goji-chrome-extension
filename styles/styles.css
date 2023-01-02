@@ -1,13 +1,15 @@
-#overlay {
-  position: fixed; /* Sit on top of the page content */
+#goji-tab {
+  /* Sit on top of the page content */
+  position: fixed;
 
   /* Move to right side (and down-ish) */
   margin-left: auto;
   margin-right: 0px;
   margin-top: 10%;
 
-  width: 65pt; /* Full width (cover the whole page) */
-  height: 50pt; /* Full height (cover the whole page) */
+  /* Define button size */
+  width: 65pt;
+  height: 50pt;
   border-radius: 10pt 0 0 10pt;
 
   /* Stretches to fill entire region */
@@ -16,7 +18,7 @@
   right: 0;
   bottom: 0;
 
-  /*background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  /* Tab colors and borders */
   background-color: #ffc4bc;
   border-color: black;
   border-style: solid;
@@ -26,9 +28,11 @@
   z-index: 9999999;
   cursor: pointer; /* Add a pointer on hover */
 
+  /* Arrange image in center */
   display: flex;
   justify-content: center;
 }
-#image {
+
+#goji-tab img {
   padding: 10pt;
 }
