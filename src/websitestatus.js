@@ -41,7 +41,7 @@ async function getData() {
 
   // Apply webiste name
   document.getElementById("brand-name").innerHTML = currentWebsite;
-  
+
   // Get HTML elements
   const categoryPercentiles = document.querySelectorAll("#category-percentile");
   const categoryNames = document.querySelectorAll("#category-name");
@@ -78,12 +78,11 @@ async function getData() {
 
       let overallGojiScorePercentile = percentileTotal / 6;
       printGojiScore(overallGojiScorePercentile, "overall-score");
-      
+
       let personalizedGojiScorePercentile = personalizedPercentileTotal / 3;
       printGojiScore(personalizedGojiScorePercentile, "personalized-score");
     });
 }
-
 
 /**
  * Draw out Goji score given a percentile and div
