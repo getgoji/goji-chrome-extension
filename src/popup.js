@@ -1,49 +1,46 @@
 // User preferences local copy
 let userPreferences;
-const categories = document.querySelectorAll('input[type="checkbox"]');
+
+// Reference to all check boxes (category toggles)
+const categoryToggles = document.querySelectorAll('input[type="checkbox"]');
+
+// Reference to the submit button element
 const submitButton = document.getElementById("submit");
 
-// Handle on load stuff
-document.addEventListener("DOMContentLoaded", () => {
-  // Load previous settings (or set new ones)
-  chrome.storage.sync.get(["preferences"], (storage) => {
-    if (storage.preferences == undefined || storage.preferences.length < 3) {
-      userPreferences = [0, 1, 2];
-      chrome.storage.sync.set({ preferences: userPreferences });
-    } else {
-      userPreferences = storage.preferences;
-    }
-    // Apply settings
-    updateToggles();
-  });
-
-  // Add event listeners
-  for (let i = 0; i < categories.length; i++) {
-    categories[i].addEventListener("click", () => {
-      togglePreference(i);
-    });
+// Load previous settings (or set new ones)
+chrome.storage.sync.get(["preferences"], (storage) => {
+  if (storage.preferences == undefined || storage.preferences.length < 3) {
+    // No valid previous settings found, create new ones
+    userPreferences = [0, 1, 2];
+    chrome.storage.sync.set({ preferences: userPreferences });
+  } else {
+    // Restore previous settings
+    userPreferences = storage.preferences;
   }
 
-  submitButton.addEventListener("click", () => {
-    chrome.storage.sync.set({ preferences: userPreferences });
+  // Update UI
+  categoryToggles.forEach((toggle, category) => {
+    toggle.checked = userPreferences.includes(category);
   });
 });
 
-// Handle toggle
-function togglePreference(category) {
-  // Remove category
-  if (userPreferences.includes(category)) {
-    userPreferences.splice(userPreferences.indexOf(category), 1);
-  } else {
-    userPreferences.push(category);
-  }
+// Set behavior for selecting a preference
+categoryToggles.forEach((toggle, category) => {
+  toggle.addEventListener("click", () => {
+    if (userPreferences.includes(category)) {
+      // Remove preference
+      userPreferences.splice(userPreferences.indexOf(category), 1);
+    } else {
+      // Add preference
+      userPreferences.push(category);
+    }
 
-  submitButton.disabled = userPreferences.length != 3;
-}
+    // Update submit button state
+    submitButton.disabled = userPreferences.length != 3;
+  });
+});
 
-// Update toggle UI based on user preferences
-function updateToggles() {
-  for (let i = 0; i < categories.length; i++) {
-    categories[i].checked = userPreferences.includes(i);
-  }
-}
+// Set submit button behavior
+submitButton.addEventListener("click", () => {
+  chrome.storage.sync.set({ preferences: userPreferences });
+});
