@@ -1,14 +1,4 @@
 /**
- * Extract detected brand data
- */
-extractBrandData().then((data) => {
-  console.log(data);
-}, (error) => {
-  console.log(error);
-});
-console.log("tried");
-
-/**
  * Inject tab
  */
 fetch(chrome.runtime.getURL("components/tab.html"))
@@ -19,6 +9,24 @@ fetch(chrome.runtime.getURL("components/tab.html"))
     // Set Goji tab icon
     document.getElementById("goji-tab-icon").src = chrome.runtime.getURL("icons/goji-icon.png");
   });
+
+/**
+ * Inject brand info card
+ */
+fetch(chrome.runtime.getURL("components/brand.html"))
+  .then(response => response.text())
+  .then(html => {
+    document.body.insertAdjacentHTML("beforeend", html);
+
+    // Load data
+    getData().then((data) => {
+      let brandData = data[0];
+      let preferencesSorted = data[1];
+
+      console.log(brandData);
+      console.log(preferencesSorted);
+    })
+  })
 
 // Add click behavior
 // gojiTabElement.addEventListener("click", function handleClick() {
