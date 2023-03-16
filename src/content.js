@@ -7,7 +7,7 @@ fetch(chrome.runtime.getURL("components/tab.html"))
     document.body.insertAdjacentHTML("beforeend", html);
 
     // Set Goji tab icon
-    document.getElementById("goji-tab-icon").src = chrome.runtime.getURL("icons/goji-icon.png");
+    document.getElementById("goji-tab-icon").src = chrome.runtime.getURL("icons/goji-tab.png");
   });
 
 /**
@@ -34,13 +34,17 @@ fetch(chrome.runtime.getURL("components/brand.html"))
       // Populate personalized category percentiles
       let personalizedPercentileTotal = 0;
       preferencesSorted.forEach((preference, index) => {
-        const thisCategory = brandData[preference + 1];
+        const thisCategory = parseInt(brandData[preference + 1]);
         personalizedPercentileTotal += thisCategory;
         categoryPercentiles[index].innerHTML = thisCategory;
         categoryNames[index].innerHTML = CATEGORY_NAMES[preference];
       });
-    })
-  })
+
+      // Print Goji score
+      printGojiScore(brandData[DataCol.TOTAL], "overall-score");
+      printGojiScore(personalizedPercentileTotal / 3, "personalized-score");
+    });
+  });
 
 // Add click behavior
 // gojiTabElement.addEventListener("click", function handleClick() {
