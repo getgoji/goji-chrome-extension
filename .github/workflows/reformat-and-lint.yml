@@ -2,12 +2,8 @@ name: Reformat and Lint
 
 on:
   pull_request:
-
+  merge_group:
   workflow_dispatch:
-
-concurrency:
-  group: "reformat-and-lint"
-  cancel-in-progress: true
 
 jobs:
   reformat-and-lint:
@@ -15,9 +11,14 @@ jobs:
 
     steps:
       - name: 🛎 Checkout
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.WORKFLOW_COMMIT }}
+      
+      - name: 🛎🤖 Bot Checkout
+        if: github.event.pull_request.user.login == 'dependabot[bot]'
+        uses: actions/checkout@v3
 
       - name: 📦 Setup Node.js and caching
         uses: actions/setup-node@v3
@@ -35,6 +36,7 @@ jobs:
         run: npx eslint .
 
       - name: ⬆️ Commit changes
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Reformat and Lint
