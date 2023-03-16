@@ -55,7 +55,7 @@ async function getData() {
   ];
 
   // Extract json data
-  fetch("../percentile.json")
+  fetch(chrome.runtime.getURL("percentile.json"))
     .then((res) => res.json())
     .then((data) => {
       // Get data current website index

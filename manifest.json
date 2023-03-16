@@ -17,7 +17,9 @@
         "icons/goji-title.png",
         "icons/half-goji.png",
         "icons/sad-goji.png",
-        "components/websitestatus.html"
+        "components/websitestatus.html",
+        "percentile.json",
+        "percentile.csv"
       ],
       "matches": ["<all_urls>"]
     }
@@ -70,7 +72,9 @@
         "https://www.target.com/*",
         "https://www.childrensplace.com/*",
         "https://www.ewm.co.uk/*",
+        "https://www.tjx.com/*",
         "https://www.underarmour.com/en-us/*",
+        "https://www.uniqlo.com/us/en/*",
         "https://www.veja-store.com/*",
         "https://www.victoriassecret.com/*",
         "https://www.walmart.com/*",
