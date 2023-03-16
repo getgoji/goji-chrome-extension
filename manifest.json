@@ -9,9 +9,7 @@
     "48": "icons/icon-48.png",
     "128": "icons/icon-128.png"
   },
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "web_accessible_resources": [
     {
       "resources": [
@@ -23,9 +21,7 @@
         "percentile.json",
         "percentile.csv"
       ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "matches": ["<all_urls>"]
     }
   ],
   "content_scripts": [
@@ -84,12 +80,8 @@
         "https://www.walmart.com/*",
         "https://www.zalando/*"
       ],
-      "js": [
-        "src/content.js"
-      ],
-      "css": [
-        "styles/styles.css"
-      ],
+      "js": ["src/content.js"],
+      "css": ["styles/styles.css"],
       "run_at": "document_end"
     }
   ],

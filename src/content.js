@@ -19,7 +19,7 @@ fetch(chrome.runtime.getURL("percentile.csv"))
   .then((res) => res.text())
   .then((data) => {
     const lineSplit = data.split("\n");
-    lineSplit.forEach(line => {
+    lineSplit.forEach((line) => {
       const splitLine = line.split(",");
       if (window.location.href.includes(splitLine[8])) {
         chrome.storage.local.set({ current_website: splitLine[0] });
