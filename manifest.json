@@ -18,8 +18,9 @@
         "icons/half-goji.png",
         "icons/sad-goji.png",
         "components/websitestatus.html",
+        "components/tab.html",
         "percentile.json",
-        "percentile.csv"
+        "data.csv"
       ],
       "matches": ["<all_urls>"]
     }
@@ -80,8 +81,8 @@
         "https://www.walmart.com/*",
         "https://www.zalando/*"
       ],
-      "js": ["src/content.js"],
-      "css": ["styles/styles.css"],
+      "js": ["src/extra.js", "src/content.js"],
+      "css": ["styles/styles.css", "styles/tab.css"],
       "run_at": "document_end"
     }
   ],

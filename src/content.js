@@ -1,36 +1,29 @@
-// Get HTML tag
-const html = document.querySelector("html");
+/**
+ * Extract detected brand data
+ */
+extractBrandData().then((data) => {
+  console.log(data);
+}, (error) => {
+  console.log(error);
+});
+console.log("tried");
 
-// Create Goji icon image
-const image = document.createElement("img");
-image.src = chrome.runtime.getURL("icons/goji-icon.png");
-image.alt = "Goji icon";
+/**
+ * Inject tab
+ */
+fetch(chrome.runtime.getURL("components/tab.html"))
+  .then(response => response.text())
+  .then(html => {
+    document.body.insertAdjacentHTML("beforeend", html);
 
-// Create tab
-const gojiTabElement = document.createElement("div");
-gojiTabElement.id = "goji-tab";
-gojiTabElement.append(image);
-
-// Inject tab
-html.append(gojiTabElement);
-
-// Get current website name
-fetch(chrome.runtime.getURL("percentile.csv"))
-  .then((res) => res.text())
-  .then((data) => {
-    const lineSplit = data.split("\n");
-    lineSplit.forEach((line) => {
-      const splitLine = line.split(",");
-      if (window.location.href.includes(splitLine[8])) {
-        chrome.storage.local.set({ current_website: splitLine[0] });
-      }
-    });
+    // Set Goji tab icon
+    document.getElementById("goji-tab-icon").src = chrome.runtime.getURL("icons/goji-icon.png");
   });
 
 // Add click behavior
-gojiTabElement.addEventListener("click", function handleClick() {
-  present(chrome.runtime.getURL("components/websitestatus.html"));
-});
+// gojiTabElement.addEventListener("click", function handleClick() {
+//   present(chrome.runtime.getURL("components/websitestatus.html"));
+// });
 
 /**
  * Present the Goji website status popup window
