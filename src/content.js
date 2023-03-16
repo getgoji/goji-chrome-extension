@@ -14,6 +14,19 @@ gojiTabElement.append(image);
 // Inject tab
 html.append(gojiTabElement);
 
+// Get current website name
+fetch(chrome.runtime.getURL("percentile.csv"))
+  .then((res) => res.text())
+  .then((data) => {
+    const lineSplit = data.split("\n");
+    lineSplit.forEach(line => {
+      const splitLine = line.split(",");
+      if (window.location.href.includes(splitLine[8])) {
+        chrome.storage.local.set({ current_website: splitLine[0] });
+      }
+    });
+  });
+
 // Add click behavior
 gojiTabElement.addEventListener("click", function handleClick() {
   present(chrome.runtime.getURL("components/websitestatus.html"));

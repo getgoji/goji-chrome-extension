@@ -9,7 +9,9 @@
     "48": "icons/icon-48.png",
     "128": "icons/icon-128.png"
   },
-  "permissions": ["storage"],
+  "permissions": [
+    "storage"
+  ],
   "web_accessible_resources": [
     {
       "resources": [
@@ -17,9 +19,13 @@
         "icons/goji-title.png",
         "icons/half-goji.png",
         "icons/sad-goji.png",
-        "components/websitestatus.html"
+        "components/websitestatus.html",
+        "percentile.json",
+        "percentile.csv"
       ],
-      "matches": ["<all_urls>"]
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ],
   "content_scripts": [
@@ -70,14 +76,20 @@
         "https://www.target.com/*",
         "https://www.childrensplace.com/*",
         "https://www.ewm.co.uk/*",
+        "https://www.tjx.com/*",
         "https://www.underarmour.com/en-us/*",
+        "https://www.uniqlo.com/us/en/*",
         "https://www.veja-store.com/*",
         "https://www.victoriassecret.com/*",
         "https://www.walmart.com/*",
         "https://www.zalando/*"
       ],
-      "js": ["src/content.js"],
-      "css": ["styles/styles.css"],
+      "js": [
+        "src/content.js"
+      ],
+      "css": [
+        "styles/styles.css"
+      ],
       "run_at": "document_end"
     }
   ],
