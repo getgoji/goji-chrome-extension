@@ -1,2 +1,24 @@
+#goji-card-host {
+    /* Sit on top of the page content */
+    position: fixed;
+    z-index: 9999999;
 
+    /* Move to right side (and down-ish) */
+    margin-left: auto;
+    /* margin-right: -250pt; */
+    margin-top: 10%;
+    transition: margin-right 0.25s;
 
+    /* Define size */
+    width: 315pt;
+    height: 325pt;
+
+    /* Stretches to fill entire region */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /* Define style */
+    background-color: black;
+}
