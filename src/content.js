@@ -7,7 +7,18 @@ fetch(chrome.runtime.getURL("components/tab.html"))
     document.body.insertAdjacentHTML("beforeend", html);
 
     // Set Goji tab icon
-    document.getElementById("goji-tab-icon").src = chrome.runtime.getURL("icons/goji-tab.png");
+    document.getElementById("goji-tab--icon").src = chrome.runtime.getURL("icons/goji-tab.png");
+
+    // Set open function
+    const tabElement = document.getElementById("goji-tab");
+    tabElement.addEventListener("click", () => {
+      // Tab styles
+      tabElement.classList.toggle("goji-tab--open");
+      document.getElementById("goji-tab--icon").classList.toggle("goji-tab--icon--open");
+      document.getElementById("goji-tab--cross").classList.toggle("goji-tab--cross--open");
+
+      document.getElementById("goji-brand-card").classList.toggle("goji-brand-card--open");
+    });
   });
 
 /**
@@ -25,11 +36,11 @@ fetch(chrome.runtime.getURL("components/brand.html"))
       let preferencesSorted = data[1];
 
       // Apply brand name
-      document.getElementById("brand-name").innerHTML = brandData[DataCol.NAME];
+      document.getElementById("goji-brand-card--name").innerHTML = brandData[DataCol.NAME];
 
       // Get HTML elements
-      const categoryPercentiles = document.querySelectorAll("#category-percentile");
-      const categoryNames = document.querySelectorAll("#category-name");
+      const categoryPercentiles = document.querySelectorAll(".goji-brand-card--category-percentile");
+      const categoryNames = document.querySelectorAll(".goji-brand-card--category-name");
 
       // Populate personalized category percentiles
       let personalizedPercentileTotal = 0;
@@ -41,39 +52,7 @@ fetch(chrome.runtime.getURL("components/brand.html"))
       });
 
       // Print Goji score
-      printGojiScore(brandData[DataCol.TOTAL], "overall-score");
-      printGojiScore(personalizedPercentileTotal / 3, "personalized-score");
+      printGojiScore(brandData[DataCol.TOTAL], "goji-brand-card--overall-score");
+      printGojiScore(personalizedPercentileTotal / 3, "goji-brand-card--personalized-score");
     });
   });
-
-// Add click behavior
-// gojiTabElement.addEventListener("click", function handleClick() {
-//   present(chrome.runtime.getURL("components/websitestatus.html"));
-// });
-
-/**
- * Present the Goji website status popup window
- * @param {string} mylink resolved URL to popup HTML document
- * @returns {void} returns early if the window is not in focus
- */
-function present(mylink) {
-  // Exit early if the window is not in focus
-  if (!window.focus) {
-    return;
-  }
-
-  // Extract the HTML document url
-  var href;
-  if (typeof mylink == "string") {
-    href = mylink;
-  } else {
-    href = mylink.href;
-  }
-
-  // Present popup
-  window.open(
-    href,
-    "Goji Store Score",
-    "width=400,height=600,scrollbars=yes,location=0"
-  );
-}
