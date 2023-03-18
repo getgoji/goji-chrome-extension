@@ -20,7 +20,7 @@
         "icons/sad-goji.png",
         "data.csv",
         "components/card.html",
-        "src/card.js"
+        "styles/card.css"
       ],
       "matches": ["<all_urls>"]
     }
@@ -81,7 +81,7 @@
         "https://www.walmart.com/*",
         "https://www.zalando/*"
       ],
-      "js": ["src/content.js"],
+      "js": ["src/card.js", "src/content.js"],
       "css": ["styles/styles.css"],
       "run_at": "document_end"
     }

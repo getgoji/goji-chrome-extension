@@ -13,12 +13,13 @@ fetch(chrome.runtime.getURL("components/card.html"))
         // Add HTML
         shadow.innerHTML = html;
 
-        // Add JS
-        const script = document.createElement('script');
-        script.src = chrome.runtime.getURL("src/card.js");
-        script.setAttribute('id', 'goji-card-script');
-        script.setAttribute('type', 'text/javascript');
-        shadow.appendChild(script);
+        // Add CSS
+        const style = document.createElement('link');
+        style.setAttribute('rel', 'stylesheet');
+        style.setAttribute('href', chrome.runtime.getURL("styles/card.css"));
+        shadow.appendChild(style);
+
+        setupTab();
     })
 
 /**
