@@ -1,14 +1,17 @@
-/**
- * Create host and inject into page
- */
+// Create host and inject into page
 const host = document.createElement('div');
 host.setAttribute('id', 'goji-card-host');
 document.body.insertAdjacentElement('beforeend', host);
 
-/**
- * Create shadow dom
- */
+// Create shadow DOM
 const shadow = host.attachShadow({ mode: 'open' });
+
+// Inject card
+fetch(chrome.runtime.getURL("components/card.html"))
+    .then(response => response.text())
+    .then(html => {
+        shadow.innerHTML = html;
+    })
 
 /**
  * Inject tab
