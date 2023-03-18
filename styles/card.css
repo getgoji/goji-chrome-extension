@@ -1,0 +1,86 @@
+* {
+    line-height: 3rem;
+    margin-block: 0;
+}
+/* Tab */
+#goji-tab {
+    /* Define button size */
+    width: 65pt;
+    height: 50pt;
+
+    /* Tab colors and borders */
+    background-color: #ffc4bc;
+    border-color: black;
+    border-style: solid;
+    border-width: 2pt 0 2pt 2pt;
+    border-radius: 10pt 0 0 10pt;
+
+    /* Add a pointer on hover */
+    cursor: pointer;
+
+    /* Arrange image in center */
+    /* display: inline-block; */
+    display: inline-flex;
+    /* justify-content: center; */
+}
+
+/* Goji icon */
+#goji-tab--icon {
+    padding: 10pt;
+    display: block;
+}
+
+.goji-tab--icon--open {
+    display: none !important;
+}
+
+/* Cross / close icon */
+#goji-tab--cross {
+    color: black;
+    font-size: 60pt;
+    font-family: sans-serif;
+    margin: auto;
+    padding-bottom: 3pt;
+    vertical-align: middle;
+    display: none;
+}
+
+.goji-tab--cross--open {
+    display: block !important;
+}
+
+/* Card */
+#goji-brand-card {
+    display: inline-block;
+    /* Define size */
+    width: 250pt;
+    height: 325pt;
+
+    /* Define style */
+    background-color: #ffc4bc;
+    border-color: black;
+    border-style: solid;
+    border-width: 2pt 0 2pt 2pt;
+    border-radius: 0 0 0 10pt;
+    text-align: center;
+    color: black;
+}
+
+.goji-brand-card--score-icon {
+    width: 30pt;
+    height: 30pt;
+}
+
+.goji-brand-card--score {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15pt;
+}
+
+.goji-brand-card--category {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.goji-brand-card--category-percentile,
+.goji-brand-card--category-name {
+    display: inline-block;
+}
