@@ -10,7 +10,15 @@ const shadow = host.attachShadow({ mode: 'open' });
 fetch(chrome.runtime.getURL("components/card.html"))
     .then(response => response.text())
     .then(html => {
+        // Add HTML
         shadow.innerHTML = html;
+
+        // Add JS
+        const script = document.createElement('script');
+        script.src = chrome.runtime.getURL("src/card.js");
+        script.setAttribute('id', 'goji-card-script');
+        script.setAttribute('type', 'text/javascript');
+        shadow.appendChild(script);
     })
 
 /**

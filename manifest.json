@@ -19,7 +19,8 @@
         "icons/half-goji.png",
         "icons/sad-goji.png",
         "data.csv",
-        "components/card.html"
+        "components/card.html",
+        "src/card.js"
       ],
       "matches": ["<all_urls>"]
     }
