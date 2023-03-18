@@ -29,6 +29,37 @@ function setupTab() {
     shadow.getElementById("goji-tab--icon").src = chrome.runtime.getURL("icons/goji-tab.png");
 }
 
+/**
+ * Populate brand info
+ */
+function setupBrand() {
+    getData().then((data) => {
+        // Get data
+        let brandData = data[0];
+        let preferencesSorted = data[1];
+
+        // Apply brand name
+        shadow.getElementById("goji-brand-card--name").innerHTML = brandData[DataCol.NAME];
+
+        // Get HTML elements
+        const categoryPercentiles = shadow.querySelectorAll(".goji-brand-card--category-percentile");
+        const categoryNames = shadow.querySelectorAll(".goji-brand-card--category-name");
+
+        // Populate personalized category percentiles
+        let personalizedPercentileTotal = 0;
+        preferencesSorted.forEach((preference, index) => {
+            const thisCategory = parseInt(brandData[preference + 1]);
+            personalizedPercentileTotal += thisCategory;
+            categoryPercentiles[index].innerHTML = thisCategory;
+            categoryNames[index].innerHTML = CATEGORY_NAMES[preference];
+        });
+
+        // Print Goji score
+        printGojiScore(brandData[DataCol.TOTAL], "goji-brand-card--overall-score");
+        printGojiScore(personalizedPercentileTotal / 3, "goji-brand-card--personalized-score");
+    });
+}
+
 
 /**
  * Return brand data and preferences as one array
@@ -96,9 +127,9 @@ async function getData() {
  */
 function printGojiScore(gojiScorePercentile, divName) {
     let numBerriesPrinted = 0;
-    const overallGojiScore = document.getElementById(divName);
+    const overallGojiScore = shadow.getElementById(divName);
     while (numBerriesPrinted < 5) {
-        const image = document.createElement("img");
+        const image = shadow.createElement("img");
         image.className = "goji-brand-card--score-icon";
         if (gojiScorePercentile > 20) {
             image.src = chrome.runtime.getURL("icons/goji.png");
