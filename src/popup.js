@@ -43,4 +43,5 @@ categoryToggles.forEach((toggle, category) => {
 // Set submit button behavior
 submitButton.addEventListener("click", () => {
   chrome.storage.sync.set({ preferences: userPreferences });
+  window.close();
 });
