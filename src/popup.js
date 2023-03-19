@@ -43,6 +43,18 @@ categoryToggles.forEach((toggle, category) => {
 
 // Set submit button behavior
 submitButton.addEventListener("click", () => {
+  // Set preferences
   chrome.storage.sync.set({ preferences: userPreferences });
-  window.close();
+
+  // Tell everyone the preferences have changed
+  (async () => {
+    // Get tabs
+    const tabs = await chrome.tabs.query({ currentWindow: true });
+    tabs.forEach((tab) => {
+      chrome.tabs.sendMessage(tab.id, { gojiPreferencesChanged: "true" });
+    })
+
+    // Close popup
+    window.close();
+  })();
 });
