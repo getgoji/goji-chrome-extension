@@ -1,60 +1,41 @@
-// Get HTML tag
-const html = document.querySelector("html");
+// Create host and inject into page
+const host = document.createElement("div");
+host.setAttribute("id", "goji-card-host");
+document.body.insertAdjacentElement("beforeend", host);
 
-// Create Goji icon image
-const image = document.createElement("img");
-image.src = chrome.runtime.getURL("icons/goji-icon.png");
-image.alt = "Goji icon";
+// Create shadow DOM
+const shadow = host.attachShadow({ mode: "open" });
 
-// Create tab
-const gojiTabElement = document.createElement("div");
-gojiTabElement.id = "goji-tab";
-gojiTabElement.append(image);
+// Inject card
+fetch(chrome.runtime.getURL("components/card.html"))
+  .then((response) => response.text())
+  .then((html) => {
+    // Add HTML
+    shadow.innerHTML = html;
 
-// Inject tab
-html.append(gojiTabElement);
+    // Add CSS
+    const style = document.createElement("link");
+    style.setAttribute("rel", "stylesheet");
+    style.setAttribute("href", chrome.runtime.getURL("styles/card.css"));
+    shadow.appendChild(style);
 
-// Get current website name
-fetch(chrome.runtime.getURL("percentile.csv"))
-  .then((res) => res.text())
-  .then((data) => {
-    const lineSplit = data.split("\n");
-    lineSplit.forEach((line) => {
-      const splitLine = line.split(",");
-      if (window.location.href.includes(splitLine[8])) {
-        chrome.storage.local.set({ current_website: splitLine[0] });
-      }
+    // Setup Tab
+    setupTab();
+
+    // Set open function
+    shadow.getElementById("goji-tab").addEventListener("click", () => {
+      // Open tab
+      host.classList.toggle("goji-card-host--open");
+
+      // Swap tab icon
+      shadow
+        .getElementById("goji-tab--icon")
+        .classList.toggle("goji-tab--icon--open");
+      shadow
+        .getElementById("goji-tab--cross")
+        .classList.toggle("goji-tab--cross--open");
     });
+
+    // Setup brand info
+    setupBrand();
   });
-
-// Add click behavior
-gojiTabElement.addEventListener("click", function handleClick() {
-  present(chrome.runtime.getURL("components/websitestatus.html"));
-});
-
-/**
- * Present the Goji website status popup window
- * @param {string} mylink resolved URL to popup HTML document
- * @returns {void} returns early if the window is not in focus
- */
-function present(mylink) {
-  // Exit early if the window is not in focus
-  if (!window.focus) {
-    return;
-  }
-
-  // Extract the HTML document url
-  var href;
-  if (typeof mylink == "string") {
-    href = mylink;
-  } else {
-    href = mylink.href;
-  }
-
-  // Present popup
-  window.open(
-    href,
-    "Goji Store Score",
-    "width=400,height=600,scrollbars=yes,location=0"
-  );
-}
