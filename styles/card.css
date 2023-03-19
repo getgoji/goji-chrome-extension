@@ -1,97 +1,97 @@
 * {
-    line-height: 2rem;
-    margin-block: 0;
+  line-height: 2rem;
+  margin-block: 0;
 }
 
 /* Tab */
 #goji-tab {
-    /* Overlay */
-    position: absolute;
-    z-index: 1;
+  /* Overlay */
+  position: absolute;
+  z-index: 1;
 
-    /* Define button size */
-    width: 65pt;
-    height: 50pt;
+  /* Define button size */
+  width: 65pt;
+  height: 50pt;
 
-    /* Tab colors and borders */
-    background-color: #ffc4bc;
-    border-color: black;
-    border-style: solid;
-    border-width: 2pt 0 2pt 2pt;
-    border-radius: 10pt 0 0 10pt;
+  /* Tab colors and borders */
+  background-color: #ffc4bc;
+  border-color: black;
+  border-style: solid;
+  border-width: 2pt 0 2pt 2pt;
+  border-radius: 10pt 0 0 10pt;
 
-    /* Add a pointer on hover */
-    cursor: pointer;
+  /* Add a pointer on hover */
+  cursor: pointer;
 
-    /* Arrange image in center */
-    display: inline-flex;
-    vertical-align: middle;
+  /* Arrange image in center */
+  display: inline-flex;
+  vertical-align: middle;
 }
 
 /* Goji icon */
 #goji-tab--icon {
-    padding: 10pt;
-    display: block;
+  padding: 10pt;
+  display: block;
 }
 
 .goji-tab--icon--open {
-    display: none !important;
+  display: none !important;
 }
 
 /* Cross / close icon */
 #goji-tab--cross {
-    color: black;
-    font-size: 35pt;
-    font-family: sans-serif;
-    margin: auto;
-    display: none;
+  color: black;
+  font-size: 35pt;
+  font-family: sans-serif;
+  margin: auto;
+  display: none;
 }
 
 .goji-tab--cross--open {
-    display: block !important;
+  display: block !important;
 }
 
 /* Card */
 #goji-brand-card {
-    /* Underlay with tab */
-    position: absolute;
-    z-index: 0;
+  /* Underlay with tab */
+  position: absolute;
+  z-index: 0;
 
-    /* Define size */
-    width: 250pt;
-    height: fit-content;
+  /* Define size */
+  width: 250pt;
+  height: fit-content;
 
-    /* Position to the right */
-    margin-left: 65pt;
+  /* Position to the right */
+  margin-left: 65pt;
 
-    /* Pad top and bottom */
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  /* Pad top and bottom */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
-    /* Define style */
-    background-color: #ffc4bc;
-    border-color: black;
-    border-style: solid;
-    border-width: 2pt 0 2pt 2pt;
-    border-radius: 0 0 0 10pt;
-    text-align: center;
-    color: black;
+  /* Define style */
+  background-color: #ffc4bc;
+  border-color: black;
+  border-style: solid;
+  border-width: 2pt 0 2pt 2pt;
+  border-radius: 0 0 0 10pt;
+  text-align: center;
+  color: black;
 }
 
 #goji-brand-card--name {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .goji-brand-card--score-icon {
-    width: 30pt;
-    height: 30pt;
+  width: 30pt;
+  height: 30pt;
 }
 
 .goji-brand-card--category-percentile,
 .goji-brand-card--category-name {
-    display: inline-block;
+  display: inline-block;
 }
 
 .goji-brand-card--category-name {
-    margin-left: -0.25rem;
+  margin-left: -0.25rem;
 }

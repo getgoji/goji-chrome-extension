@@ -1,25 +1,25 @@
 #goji-card-host {
-    /* Sit on top of the page content */
-    position: fixed;
-    z-index: 9999999;
+  /* Sit on top of the page content */
+  position: fixed;
+  z-index: 9999999;
 
-    /* Move to right side (and down-ish) */
-    margin-left: auto;
-    margin-right: -250pt;
-    margin-top: 10%;
-    transition: margin-right 0.25s;
+  /* Move to right side (and down-ish) */
+  margin-left: auto;
+  margin-right: -250pt;
+  margin-top: 10%;
+  transition: margin-right 0.25s;
 
-    /* Define size */
-    width: 315pt;
-    height: fit-content;
+  /* Define size */
+  width: 315pt;
+  height: fit-content;
 
-    /* Stretches to fill entire region */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  /* Stretches to fill entire region */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .goji-card-host--open {
-    margin-right: 0 !important;
+  margin-right: 0 !important;
 }
