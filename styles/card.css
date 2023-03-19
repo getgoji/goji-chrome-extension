@@ -79,16 +79,12 @@
 }
 
 #goji-brand-card--name {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .goji-brand-card--score-icon {
     width: 30pt;
     height: 30pt;
-}
-
-.goji-brand-card--category {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .goji-brand-card--category-percentile,
