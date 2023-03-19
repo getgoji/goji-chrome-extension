@@ -24,9 +24,8 @@
     cursor: pointer;
 
     /* Arrange image in center */
-    /* display: inline-block; */
     display: inline-flex;
-    /* justify-content: center; */
+    vertical-align: middle;
 }
 
 /* Goji icon */
@@ -42,11 +41,9 @@
 /* Cross / close icon */
 #goji-tab--cross {
     color: black;
-    font-size: 60pt;
+    font-size: 35pt;
     font-family: sans-serif;
     margin: auto;
-    padding-bottom: 3pt;
-    vertical-align: middle;
     display: none;
 }
 
@@ -84,10 +81,6 @@
 #goji-brand-card--name {
     margin-bottom: 1rem;
 }
-
-/* .goji-brand-card--score {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-} */
 
 .goji-brand-card--score-icon {
     width: 30pt;

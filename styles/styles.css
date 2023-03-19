@@ -5,7 +5,7 @@
 
     /* Move to right side (and down-ish) */
     margin-left: auto;
-    /* margin-right: -250pt; */
+    margin-right: -250pt;
     margin-top: 10%;
     transition: margin-right 0.25s;
 
@@ -18,4 +18,8 @@
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.goji-card-host--open {
+    margin-right: 0 !important;
 }

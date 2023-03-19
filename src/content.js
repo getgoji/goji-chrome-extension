@@ -23,14 +23,13 @@ fetch(chrome.runtime.getURL("components/card.html"))
         setupTab();
 
         // Set open function
-        const tabElement = shadow.getElementById("goji-tab");
-        tabElement.addEventListener("click", () => {
-            // Tab styles
-            tabElement.classList.toggle("goji-tab--open");
+        shadow.getElementById("goji-tab").addEventListener("click", () => {
+            // Open tab
+            host.classList.toggle("goji-card-host--open");
+
+            // Swap tab icon
             shadow.getElementById("goji-tab--icon").classList.toggle("goji-tab--icon--open");
             shadow.getElementById("goji-tab--cross").classList.toggle("goji-tab--cross--open");
-
-            shadow.getElementById("goji-brand-card").classList.toggle("goji-brand-card--open");
         });
 
         // Setup brand info
