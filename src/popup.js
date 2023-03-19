@@ -37,6 +37,7 @@ categoryToggles.forEach((toggle, category) => {
 
     // Update submit button state
     submitButton.disabled = userPreferences.length != 3;
+    submitButton.innerHTML = userPreferences.length === 3 ? "Save & Close" : "Pick 3 Categories";
   });
 });
 

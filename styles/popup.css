@@ -14,4 +14,16 @@ body {
 
 .checkboxes label {
   font-size: 20pt;
+  line-height: 3rem;
+}
+
+#submit-wrapper {
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+#submit {
+  height: 2rem;
 }
