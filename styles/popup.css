@@ -1,6 +1,6 @@
 body {
   width: 300pt;
-  height: 425pt;
+  height: fit-content;
   background-color: #ffc4bc;
 }
 
@@ -8,20 +8,8 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100pt;
-  height: 100pt;
-}
-
-h2 {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  font-size: 30pt;
-}
-
-h3 {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  font-size: 20pt;
+  width: 50pt;
+  height: 50pt;
 }
 
 .checkboxes label {
