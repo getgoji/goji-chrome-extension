@@ -2,6 +2,7 @@
     line-height: 2rem;
     margin-block: 0;
 }
+
 /* Tab */
 #goji-tab {
     /* Overlay */
@@ -61,10 +62,14 @@
 
     /* Define size */
     width: 250pt;
-    height: 325pt;
+    height: fit-content;
 
     /* Position to the right */
     margin-left: 65pt;
+
+    /* Pad top and bottom */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
     /* Define style */
     background-color: #ffc4bc;
@@ -76,14 +81,17 @@
     color: black;
 }
 
+#goji-brand-card--name {
+    margin-bottom: 1rem;
+}
+
+/* .goji-brand-card--score {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+} */
+
 .goji-brand-card--score-icon {
     width: 30pt;
     height: 30pt;
-}
-
-.goji-brand-card--score {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 15pt;
 }
 
 .goji-brand-card--category {
@@ -93,4 +101,8 @@
 .goji-brand-card--category-percentile,
 .goji-brand-card--category-name {
     display: inline-block;
+}
+
+.goji-brand-card--category-name {
+    margin-left: -0.25rem;
 }

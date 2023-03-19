@@ -11,7 +11,7 @@
 
     /* Define size */
     width: 315pt;
-    height: 325pt;
+    height: fit-content;
 
     /* Stretches to fill entire region */
     top: 0;
