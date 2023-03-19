@@ -4,6 +4,10 @@
 }
 /* Tab */
 #goji-tab {
+    /* Overlay */
+    position: absolute;
+    z-index: 1;
+
     /* Define button size */
     width: 65pt;
     height: 50pt;
@@ -51,10 +55,16 @@
 
 /* Card */
 #goji-brand-card {
-    display: inline-block;
+    /* Underlay with tab */
+    position: absolute;
+    z-index: 0;
+
     /* Define size */
     width: 250pt;
     height: 325pt;
+
+    /* Position to the right */
+    margin-left: 65pt;
 
     /* Define style */
     background-color: #ffc4bc;
