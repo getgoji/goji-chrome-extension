@@ -129,7 +129,7 @@ function printGojiScore(gojiScorePercentile, divName) {
     let numBerriesPrinted = 0;
     const overallGojiScore = shadow.getElementById(divName);
     while (numBerriesPrinted < 5) {
-        const image = shadow.createElement("img");
+        const image = document.createElement("img");
         image.className = "goji-brand-card--score-icon";
         if (gojiScorePercentile > 20) {
             image.src = chrome.runtime.getURL("icons/goji.png");
