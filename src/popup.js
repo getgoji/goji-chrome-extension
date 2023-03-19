@@ -37,10 +37,25 @@ categoryToggles.forEach((toggle, category) => {
 
     // Update submit button state
     submitButton.disabled = userPreferences.length != 3;
+    submitButton.innerHTML =
+      userPreferences.length === 3 ? "Save & Close" : "Pick 3 Categories";
   });
 });
 
 // Set submit button behavior
 submitButton.addEventListener("click", () => {
+  // Set preferences
   chrome.storage.sync.set({ preferences: userPreferences });
+
+  // Tell everyone the preferences have changed
+  (async () => {
+    // Get tabs
+    const tabs = await chrome.tabs.query({ currentWindow: true });
+    tabs.forEach((tab) => {
+      chrome.tabs.sendMessage(tab.id, { gojiPreferencesChanged: "true" });
+    });
+
+    // Close popup
+    window.close();
+  })();
 });

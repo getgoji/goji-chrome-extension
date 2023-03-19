@@ -39,3 +39,11 @@ fetch(chrome.runtime.getURL("components/card.html"))
     // Setup brand info
     setupBrand();
   });
+
+// Listen for preference updates
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.gojiPreferencesChanged == "true") {
+    // Reload page
+    window.location.reload();
+  }
+});
