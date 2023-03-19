@@ -10,7 +10,8 @@ const DataCol = {
     TRANSPARENCY_AND_POLICY: 5,
     DEI: 6,
     TOTAL: 7,
-    URL: 8,
+    MORE_INFO: 8,
+    URL: 9,
 };
 
 const CATEGORY_NAMES = [
@@ -57,6 +58,14 @@ function setupBrand() {
         // Print Goji score
         printGojiScore(brandData[DataCol.TOTAL], "goji-brand-card--overall-score");
         printGojiScore(personalizedPercentileTotal / 3, "goji-brand-card--personalized-score");
+
+        // Add link to more info
+        const moreInfoUrl = brandData[DataCol.MORE_INFO];
+        if (moreInfoUrl != "nan") {
+            const moreInfoLink = shadow.getElementById("goji-brand-card--more-info");
+            moreInfoLink.href = brandData[DataCol.MORE_INFO];
+            moreInfoLink.innerHTML = "More Info";
+        }
     });
 }
 
