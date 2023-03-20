@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Goji",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Seeding sustainability. Goji is a Chrome extension that helps you understand how sustainable your favorite fashion brands are.",
   "icons": {
     "16": "icons/icon-16.png",
