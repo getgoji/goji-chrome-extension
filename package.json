@@ -1,22 +1,36 @@
 {
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true,
-      "webextensions": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "rules": {
-      "no-undef": "off",
-      "no-unused-vars": "off"
-    }
+  "name": "Goji",
+  "displayName": "Goji",
+  "version": "0.2",
+  "description": "Seeding sustainability. Goji is a Chrome extension that helps you understand how sustainable your favorite fashion brands are.",
+  "author": "Goji",
+  "packageManager": "npm@9.6.6",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.1",
+    "@mui/material": "^5.13.2",
+    "plasmo": "0.72.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "eslint": "^8.41.0",
-    "prettier": "^2.8.8"
+    "@plasmohq/prettier-plugin-sort-imports": "3.6.4",
+    "@types/chrome": "0.0.227",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.32",
+    "@types/react-dom": "18.0.11",
+    "prettier": "2.8.7",
+    "typescript": "5.0.3"
+  },
+  "manifest": {
+    "host_permissions": [
+      "https://*/*"
+    ]
   }
 }
