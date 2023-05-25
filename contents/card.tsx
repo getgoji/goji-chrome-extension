@@ -2,11 +2,6 @@ import Button from "@mui/material/Button"
 import cssText from "data-text:./card.css"
 import type { PlasmoCSConfig, PlasmoGetStyle } from "plasmo"
 
-export const config: PlasmoCSConfig = {
-  matches: ["https://www.google.com/*"],
-  all_frames: true
-}
-
 // export const getStyle: PlasmoGetStyle = () => {
 //   const style = document.createElement("style")
 //   style.textContent = cssText
