@@ -7,19 +7,17 @@ export const config: PlasmoCSConfig = {
   all_frames: true
 }
 
-export const getStyle: PlasmoGetStyle = () => {
-  const style = document.createElement("style")
-  style.textContent = cssText
-  return style
-}
+// export const getStyle: PlasmoGetStyle = () => {
+//   const style = document.createElement("style")
+//   style.textContent = cssText
+//   return style
+// }
 
-const GojiCard = () => {
+export const GojiCard = () => {
   return (
     <div id="goji-card-host">
-      <h1>Goji Card</h1>
+      <h1>Goji Card hi</h1>
       <Button variant="contained">Button</Button>
     </div>
   )
 }
-
-export default GojiCard
