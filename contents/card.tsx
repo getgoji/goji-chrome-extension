@@ -8,7 +8,14 @@ import type { PlasmoCSConfig, PlasmoGetStyle } from "plasmo"
 //   return style
 // }
 
+export const config: PlasmoCSConfig = {
+  matches: ["https://www.google.com/*"],
+  all_frames: true
+}
+
 export const GojiCard = () => {
+  console.log("Goji Card");
+  
   return (
     <div id="goji-card-host">
       <h1>Goji Card hi</h1>
@@ -16,3 +23,5 @@ export const GojiCard = () => {
     </div>
   )
 }
+
+export default GojiCard

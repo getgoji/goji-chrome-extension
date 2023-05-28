@@ -10,7 +10,7 @@ import type { PlasmoCSConfig } from "plasmo"
 import type { FC } from "react"
 import { createRoot } from "react-dom/client"
 
-import { GojiCard } from "./card"
+// import { GojiCard } from "./card.off"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://www.google.com/*"],
@@ -19,18 +19,21 @@ export const config: PlasmoCSConfig = {
 
 let cssCache: EmotionCache
 const App: FC<PlasmoCSUIProps> = () => {
-  console.log("Call App");
-  
-  return (
-    <CacheProvider value={cssCache}>
-      <GojiCard />
-    </CacheProvider>
-  )
+  console.log("Call App")
+
+  return <p>Hello</p>
+  // (
+  // <CacheProvider value={cssCache}>
+  //   hello
+  //   {/* <GojiCard /> */}
+  // </CacheProvider>
+  // )
 }
 
 export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
   createRootContainer // This creates the default root container
 }) => {
+  console.log("Goji render")
   const rootContainer = await createRootContainer()
   const rootElement = document.createElement("div")
   const emotionRoot = document.createElement("style")
@@ -45,7 +48,7 @@ export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
 
   console.log("Goji Custom render")
 
-  const root = createRoot(rootElement) // Any root
+  const root = createRoot(rootContainer) // Any root
   root.render(<App />)
 }
 
