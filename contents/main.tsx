@@ -1,27 +1,39 @@
 import createCache from "@emotion/cache"
-import type { EmotionCache } from "@emotion/react"
 import { CacheProvider } from "@emotion/react"
+import Button from "@mui/material/Button"
+import cssText from "data-text:./card.css"
 import type {
+  PlasmoCSConfig,
   PlasmoCSUIJSXContainer,
-  PlasmoCSUIProps,
+  PlasmoGetStyle,
   PlasmoRender
 } from "plasmo"
-import type { PlasmoCSConfig } from "plasmo"
-import type { FC } from "react"
 import { createRoot } from "react-dom/client"
 
-import { GojiCard } from "./card"
-
+// Plasmo configuration
 export const config: PlasmoCSConfig = {
   matches: ["https://www.google.com/*"],
   all_frames: true
 }
 
-// let cssCache: EmotionCache
-const App: FC<PlasmoCSUIProps> = () => {
-  return <GojiCard />
+// Inject card styles
+export const getStyle: PlasmoGetStyle = () => {
+  const style = document.createElement("style")
+  style.textContent = cssText
+  return style
 }
 
+// The Card itself
+const GojiCard = (): JSX.Element => {
+  return (
+    <div id="goji-card-host">
+      <h1>Goji Card hi</h1>
+      <Button variant="contained">Button</Button>
+    </div>
+  )
+}
+
+// Custom render with CSS cache
 export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
   anchor,
   createRootContainer
@@ -46,9 +58,9 @@ export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
   const root = createRoot(rootElement) // Any root
   root.render(
     <CacheProvider value={cssCache}>
-      <App />
+      <GojiCard />
     </CacheProvider>
   )
 }
 
-export default App
+export default GojiCard
