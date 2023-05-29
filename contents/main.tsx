@@ -10,46 +10,45 @@ import type { PlasmoCSConfig } from "plasmo"
 import type { FC } from "react"
 import { createRoot } from "react-dom/client"
 
-// import { GojiCard } from "./card.off"
+import { GojiCard } from "./card"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://www.google.com/*"],
   all_frames: true
 }
 
-let cssCache: EmotionCache
+// let cssCache: EmotionCache
 const App: FC<PlasmoCSUIProps> = () => {
-  console.log("Call App")
-
-  return <p>Hello</p>
-  // (
-  // <CacheProvider value={cssCache}>
-  //   hello
-  //   {/* <GojiCard /> */}
-  // </CacheProvider>
-  // )
+  return <GojiCard />
 }
 
 export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
-  createRootContainer // This creates the default root container
+  anchor,
+  createRootContainer
 }) => {
-  console.log("Goji render")
-  const rootContainer = await createRootContainer()
+  // Create default root container
+  const rootContainer = await createRootContainer(anchor)
+
+  // Create root and style root
   const rootElement = document.createElement("div")
   const emotionRoot = document.createElement("style")
   rootContainer.appendChild(emotionRoot)
   rootContainer.appendChild(rootElement)
 
-  const cache = createCache({
+  // Create CSS cache
+  let cssCache = createCache({
     key: "css",
     prepend: true,
     container: emotionRoot
   })
 
-  console.log("Goji Custom render")
-
-  const root = createRoot(rootContainer) // Any root
-  root.render(<App />)
+  // Render
+  const root = createRoot(rootElement) // Any root
+  root.render(
+    <CacheProvider value={cssCache}>
+      <App />
+    </CacheProvider>
+  )
 }
 
 export default App

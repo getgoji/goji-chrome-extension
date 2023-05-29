@@ -14,8 +14,8 @@ export const config: PlasmoCSConfig = {
 }
 
 export const GojiCard = () => {
-  console.log("Goji Card");
-  
+  console.log("Goji Card")
+
   return (
     <div id="goji-card-host">
       <h1>Goji Card hi</h1>
@@ -23,5 +23,3 @@ export const GojiCard = () => {
     </div>
   )
 }
-
-export default GojiCard
