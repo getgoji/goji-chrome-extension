@@ -11,6 +11,12 @@
 
   /* Color */
   background-color: #ffc4bc;
+  border-radius: 10pt 0 0 10pt;
+  border-color: black;
+  border-width: 2pt 0 2pt 2pt;
+  border-style: solid;
+  overflow: hidden;
+
 
   /* Define size */
   width: fit-content;
@@ -21,4 +27,8 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.goji-tab-content {
+  padding: 10pt;
 }
