@@ -1,16 +1,24 @@
-#goji-card-host {
+.goji-card__host {
   /* Sit on top of the page content */
   position: fixed;
   z-index: 9999999;
 
   /* Move to right side (and down-ish) */
   margin-left: auto;
-  margin-right: -250pt;
+  margin-right: 0;
   margin-top: 10%;
   transition: margin-right 0.25s;
 
+  /* Color */
+  background-color: #ffc4bc;
+  border-radius: 10pt 0 0 10pt;
+  border-color: black;
+  border-width: 2pt 0 2pt 2pt;
+  border-style: solid;
+  overflow: hidden;
+
   /* Define size */
-  width: 315pt;
+  width: fit-content;
   height: fit-content;
 
   /* Stretches to fill entire region */
@@ -20,6 +28,6 @@
   bottom: 0;
 }
 
-.goji-card-host--open {
-  margin-right: 0 !important;
+.goji-card__content {
+  padding: 10pt;
 }
