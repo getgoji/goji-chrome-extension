@@ -1,5 +1,6 @@
 import createCache from "@emotion/cache"
-import { CacheProvider } from "@emotion/react"
+import { CacheProvider, ThemeProvider } from "@emotion/react"
+import { ScopedCssBaseline } from "@mui/material"
 import Button from "@mui/material/Button"
 import cssText from "data-text:./card.css"
 import type {
@@ -57,9 +58,11 @@ export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
   // Render
   const root = createRoot(rootElement) // Any root
   root.render(
-    <CacheProvider value={cssCache}>
-      <GojiCard />
-    </CacheProvider>
+    <ScopedCssBaseline>
+      <CacheProvider value={cssCache}>
+        <GojiCard />
+      </CacheProvider>
+    </ScopedCssBaseline>
   )
 }
 

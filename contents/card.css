@@ -9,7 +9,8 @@
   margin-top: 10%;
   transition: margin-right 0.25s;
 
-  background-color: magenta;
+  /* Color */
+  background-color: #ffc4bc;
 
   /* Define size */
   width: 300pt;
