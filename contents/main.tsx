@@ -15,6 +15,71 @@ import { createRoot } from "react-dom/client"
 
 import { brandData } from "./data"
 
+// The Card itself
+const GojiCard = (): JSX.Element => {
+  const [tab, setTab] = useState(0)
+
+  return (
+    <div className="goji-card__host">
+      {/* Card Content */}
+      <div className="goji-card__content">
+        {/* Brand Goji Score */}
+        {tab === 0 && <div>{brandData().name}</div>}
+
+        {/* Settings */}
+        {tab === 1 && <div>Settings page!</div>}
+      </div>
+
+      <Tabs
+        value={tab}
+        onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}
+        variant="fullWidth">
+        <Tab icon={<Star />} label="Score" value={0} />
+        <Tab icon={<Settings />} label="Settings" value={1} />
+      </Tabs>
+    </div>
+  )
+}
+
+// Custom render with CSS cache
+export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
+  anchor,
+  createRootContainer
+}) => {
+  // Create default root container
+  const rootContainer = await createRootContainer(anchor)
+
+  // Create root and style root
+  const rootElement = document.createElement("div")
+  const emotionRoot = document.createElement("style")
+  rootContainer.appendChild(emotionRoot)
+  rootContainer.appendChild(rootElement)
+
+  // Create CSS cache
+  let cssCache = createCache({
+    key: "css",
+    prepend: true,
+    container: emotionRoot
+  })
+
+  // Render
+  const root = createRoot(rootElement) // Any root
+  root.render(
+    <ScopedCssBaseline>
+      <CacheProvider value={cssCache}>
+        <GojiCard />
+      </CacheProvider>
+    </ScopedCssBaseline>
+  )
+}
+
+// Inject card styles
+export const getStyle: PlasmoGetStyle = () => {
+  const style = document.createElement("style")
+  style.textContent = cssText
+  return style
+}
+
 // Plasmo configuration
 export const config: PlasmoCSConfig = {
   matches: [
@@ -72,68 +137,6 @@ export const config: PlasmoCSConfig = {
     "https://www.zalando/*"
   ],
   all_frames: true
-}
-
-// Inject card styles
-export const getStyle: PlasmoGetStyle = () => {
-  const style = document.createElement("style")
-  style.textContent = cssText
-  return style
-}
-
-// The Card itself
-const GojiCard = (): JSX.Element => {
-  const [tab, setTab] = useState(0)
-
-  return (
-    <div id="goji-card-host">
-      <div className="goji-tab-content">
-        {tab === 0 && <div>{brandData().name}</div>}
-
-        {tab === 1 && <div>Settings page!</div>}
-      </div>
-
-      <Tabs
-        value={tab}
-        onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}
-        variant="fullWidth">
-        <Tab icon={<Star />} label="Score" value={0} />
-        <Tab icon={<Settings />} label="Settings" value={1} />
-      </Tabs>
-    </div>
-  )
-}
-
-// Custom render with CSS cache
-export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
-  anchor,
-  createRootContainer
-}) => {
-  // Create default root container
-  const rootContainer = await createRootContainer(anchor)
-
-  // Create root and style root
-  const rootElement = document.createElement("div")
-  const emotionRoot = document.createElement("style")
-  rootContainer.appendChild(emotionRoot)
-  rootContainer.appendChild(rootElement)
-
-  // Create CSS cache
-  let cssCache = createCache({
-    key: "css",
-    prepend: true,
-    container: emotionRoot
-  })
-
-  // Render
-  const root = createRoot(rootElement) // Any root
-  root.render(
-    <ScopedCssBaseline>
-      <CacheProvider value={cssCache}>
-        <GojiCard />
-      </CacheProvider>
-    </ScopedCssBaseline>
-  )
 }
 
 export default GojiCard

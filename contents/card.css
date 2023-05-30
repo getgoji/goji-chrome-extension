@@ -1,4 +1,4 @@
-#goji-card-host {
+.goji-card__host {
   /* Sit on top of the page content */
   position: fixed;
   z-index: 9999999;
@@ -29,6 +29,6 @@
   bottom: 0;
 }
 
-.goji-tab-content {
+.goji-card__content {
   padding: 10pt;
 }
