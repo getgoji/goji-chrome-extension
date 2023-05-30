@@ -13,8 +13,8 @@
   background-color: #ffc4bc;
 
   /* Define size */
-  width: 300pt;
-  height: 500pt;
+  width: fit-content;
+  height: fit-content;
 
   /* Stretches to fill entire region */
   top: 0;
