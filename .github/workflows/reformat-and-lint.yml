@@ -23,7 +23,7 @@ jobs:
       - name: 📦 Setup Node.js and caching
         uses: actions/setup-node@v3
         with:
-          node-version: 19
+          node-version: latest
           cache: "npm"
 
       - name: 🔨 Install
