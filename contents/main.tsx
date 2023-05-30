@@ -56,7 +56,7 @@ export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
   rootContainer.appendChild(rootElement)
 
   // Create CSS cache
-  let cssCache = createCache({
+  const cssCache = createCache({
     key: "css",
     prepend: true,
     container: emotionRoot
