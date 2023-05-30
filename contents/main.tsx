@@ -13,6 +13,8 @@ import type {
 import { type SyntheticEvent, useState } from "react"
 import { createRoot } from "react-dom/client"
 
+import { brandData } from "./data"
+
 // Plasmo configuration
 export const config: PlasmoCSConfig = {
   matches: [
@@ -86,7 +88,7 @@ const GojiCard = (): JSX.Element => {
   return (
     <div id="goji-card-host">
       <div className="goji-tab-content">
-        {tab === 0 && <div>Goji Score page!</div>}
+        {tab === 0 && <div>{brandData().name}</div>}
 
         {tab === 1 && <div>Settings page!</div>}
       </div>
