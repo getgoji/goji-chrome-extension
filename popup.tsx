@@ -1,5 +1,5 @@
-import { useState } from "react"
 import Button from "@mui/material/Button"
+import { useState } from "react"
 
 function IndexPopup() {
   const [data, setData] = useState("")
