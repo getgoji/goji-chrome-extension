@@ -1,5 +1,15 @@
 import dataText from "data-text:~data.csv"
 
+export const categories = [
+  "Carbon Emissions",
+  "Water Usage",
+  "Ethical Sourcing",
+  "Labor Rights",
+  "Transparency & Policy",
+  "Diversity, Equity, & Inclusion"
+]
+export type Category = (typeof categories)[number]
+
 interface BrandData {
   name: string
   carbonEmissions: number
