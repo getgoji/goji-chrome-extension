@@ -13,9 +13,9 @@ import type {
 import { type SyntheticEvent, useState } from "react"
 import { createRoot } from "react-dom/client"
 
-import { brandData } from "./data"
-import { Score } from "./score"
-import { SettingsPage } from "./settings"
+import { brandData } from "~components/data"
+import { Score } from "~components/score"
+import { SettingsPage } from "~components/settings"
 
 // The Card itself
 const GojiCard = (): JSX.Element => {
