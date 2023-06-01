@@ -20,7 +20,7 @@ const defaultCategoryWeightsMap = (): Map<Category, number> => {
  * Settings page
  * @returns Settings page
  */
-export const SettingsPage = () => {
+export const SettingsPage = (): JSX.Element => {
   // Category storage
   const [categoryWeights, setCategoryWeights] = useStorage(
     "gojiCategoryWeights",

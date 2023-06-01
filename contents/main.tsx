@@ -14,18 +14,19 @@ import { type SyntheticEvent, useState } from "react"
 import { createRoot } from "react-dom/client"
 
 import { brandData } from "./data"
+import { Score } from "./score"
 import { SettingsPage } from "./settings"
 
 // The Card itself
 const GojiCard = (): JSX.Element => {
-  const [tab, setTab] = useState(1)
+  const [tab, setTab] = useState(0)
 
   return (
     <div className="goji-card__host">
       {/* Card Content */}
       <div className="goji-card__content">
         {/* Brand Goji Score */}
-        {tab === 0 && <div>{brandData().name}</div>}
+        {tab === 0 && <Score data={brandData()} />}
 
         {/* Settings */}
         {tab === 1 && <SettingsPage />}
