@@ -1,4 +1,4 @@
-import { Box, Container, Link, Stack } from "@mui/material"
+import { Link, Stack } from "@mui/material"
 import LinearProgress from "@mui/material/LinearProgress"
 import Grid from "@mui/material/Unstable_Grid2"
 
@@ -10,8 +10,8 @@ export const Score = (props: {
   categoryWeights: Map<Category, number>
 }): JSX.Element => {
   // Compute weighted score
-  let totalWeight: number = 0
-  let score: number = 0
+  let totalWeight = 0
+  let score = 0
   props.data.categoryValues.forEach((value, category) => {
     console.log("===")
 
