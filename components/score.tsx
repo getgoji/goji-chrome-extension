@@ -5,6 +5,40 @@ import Grid from "@mui/material/Unstable_Grid2"
 import { Berry } from "./berry"
 import type { BrandData, Category } from "./data"
 
+export const Score = (props: {
+  data: BrandData
+  categoryWeights: Map<Category, number>
+}): JSX.Element => {
+  // Compute weighted score
+  return (
+    <>
+      <h1>{props.data.name}</h1>
+      <Stack spacing={2}>
+        {/* Goji Berries */}
+        <Stack alignItems={"center"} spacing={0} sx={{ marginBottom: "-15pt" }}>
+          <Stack direction={"row"} spacing={2}>
+            {printBerries(props.data.total)}
+          </Stack>
+          <p className="goji-card__score-number">
+            {((props.data.total / 100) * 5).toPrecision(2)} / 5
+          </p>
+        </Stack>
+
+        {/* Score Breakdown */}
+        {extractCategoryValues(props.data.categoryValues)}
+
+        {/* More Info Link */}
+        <Link
+          href={props.data.moreInfo}
+          target="_blank"
+          rel="noopener noreferrer">
+          More Info
+        </Link>
+      </Stack>
+    </>
+  )
+}
+
 /**
  * Extract category values and return them as components
  * @param categoryValues Category values
@@ -15,7 +49,9 @@ const extractCategoryValues = (categoryValues: Map<Category, number>) => {
   categoryValues.forEach((value, category) => {
     output.push(
       <Grid container spacing={0}>
-        <Grid xs={"auto"}><b>{category}</b></Grid>
+        <Grid xs={"auto"}>
+          <b>{category}</b>
+        </Grid>
         <Grid xs></Grid>
         <Grid xs={"auto"}>{value}%tile</Grid>
         <Grid xs={12}>
@@ -49,32 +85,4 @@ const printBerries = (score: number) => {
   }
 
   return output
-}
-
-export const Score = (props: { data: BrandData }): JSX.Element => {
-  return (
-    <>
-      <h1>{props.data.name}</h1>
-      <Stack spacing={2}>
-        {/* Goji Berries */}
-        <Stack alignItems={"center"} spacing={0} sx={{marginBottom: "-15pt"}}>
-          <Stack direction={"row"} spacing={2}>
-            {printBerries(props.data.total)}
-          </Stack>
-          <p className="goji-card__score-number">{((props.data.total / 100) * 5).toPrecision(2)} / 5</p>
-        </Stack>
-
-        {/* Score Breakdown */}
-        {extractCategoryValues(props.data.categoryValues)}
-
-        {/* More Info Link */}
-        <Link
-          href={props.data.moreInfo}
-          target="_blank"
-          rel="noopener noreferrer">
-          More Info
-        </Link>
-      </Stack>
-    </>
-  )
 }

@@ -17,23 +17,41 @@ import type {
 import { type SyntheticEvent, useState } from "react"
 import { createRoot } from "react-dom/client"
 
+import { useStorage } from "@plasmohq/storage/hook"
+
 import { brandData } from "~components/data"
+import { categories } from "~components/data"
+import type { Category } from "~components/data"
 import { Score } from "~components/score"
 import { SettingsPage } from "~components/settings"
 
 // The Card itself
 const GojiCard = (): JSX.Element => {
+  // Tab states
   const [tab, setTab] = useState(0)
+
+  // Category storage
+  const [categoryWeights, setCategoryWeights] = useStorage(
+    "gojiCategoryWeights",
+    (stored) => (stored === undefined ? defaultCategoryWeightsMap() : stored)
+  )
 
   return (
     <div className="goji-card__host">
       {/* Card Content */}
       <div className="goji-card__content">
         {/* Brand Goji Score */}
-        {tab === 0 && <Score data={brandData()} />}
+        {tab === 0 && (
+          <Score data={brandData()} categoryWeights={categoryWeights} />
+        )}
 
         {/* Settings */}
-        {tab === 1 && <SettingsPage />}
+        {tab === 1 && (
+          <SettingsPage
+            categoryWeights={categoryWeights}
+            setCategoryWeights={setCategoryWeights}
+          />
+        )}
       </div>
 
       <BottomNavigation
@@ -50,6 +68,20 @@ const GojiCard = (): JSX.Element => {
       </BottomNavigation>
     </div>
   )
+}
+
+// Category weights
+/**
+ * Genereate default category weights map for storage
+ * @returns Default category weights map
+ */
+const defaultCategoryWeightsMap = (): Map<Category, number> => {
+  const map = new Map<Category, number>()
+  categories.forEach((category) => {
+    map.set(category, 1)
+  })
+
+  return map
 }
 
 // Custom render with CSS cache
