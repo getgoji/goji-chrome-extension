@@ -3,13 +3,29 @@ import LinearProgress from "@mui/material/LinearProgress"
 import Grid from "@mui/material/Unstable_Grid2"
 
 import { Berry } from "./berry"
-import type { BrandData, Category } from "./data"
+import { type BrandData, type Category } from "./data"
 
 export const Score = (props: {
   data: BrandData
   categoryWeights: Map<Category, number>
 }): JSX.Element => {
   // Compute weighted score
+  let totalWeight: number = 0
+  let score: number = 0
+  props.data.categoryValues.forEach((value, category) => {
+    console.log("===")
+
+    const weight = parseFloat(props.categoryWeights[category])
+    console.log("Weight: " + weight)
+
+    totalWeight += weight
+    console.log("Total Weight: " + totalWeight)
+
+    score += weight * value
+    console.log("Score: " + score)
+  })
+  score /= totalWeight
+
   return (
     <>
       <h1>{props.data.name}</h1>
@@ -17,10 +33,10 @@ export const Score = (props: {
         {/* Goji Berries */}
         <Stack alignItems={"center"} spacing={0} sx={{ marginBottom: "-15pt" }}>
           <Stack direction={"row"} spacing={2}>
-            {printBerries(props.data.total)}
+            {printBerries(score)}
           </Stack>
           <p className="goji-card__score-number">
-            {((props.data.total / 100) * 5).toPrecision(2)} / 5
+            {((score / 100) * 5).toPrecision(2)} / 5
           </p>
         </Stack>
 

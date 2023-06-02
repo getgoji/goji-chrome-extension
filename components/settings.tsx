@@ -11,9 +11,7 @@ export const SettingsPage = (props: {
 }): JSX.Element => {
   return (
     <>
-      <h1>Settings</h1>
-
-      <h2>Category Weights</h2>
+      <h1>Category Weights</h1>
 
       {categories.map((category) => {
         return (
