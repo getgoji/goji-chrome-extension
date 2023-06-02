@@ -5,21 +5,22 @@
 
   /* Move to right side (and down-ish) */
   margin-left: auto;
-  margin-right: 0;
-  margin-top: 10%;
+  margin-top: auto;
+  margin-right: 5rem;
+  margin-bottom: 5rem;
   transition: margin-right 0.25s;
 
   /* Color */
   background-color: #ffc4bc;
-  border-radius: 10pt 0 0 10pt;
+  border-radius: 10pt;
   border-color: black;
-  border-width: 2pt 0 2pt 2pt;
+  border-width: 2pt;
   border-style: solid;
   overflow: hidden;
 
   /* Define size */
-  width: 20rem;
-  height: 32rem;
+  width: 23rem;
+  height: 35rem;
 
   /* Stretches to fill entire region */
   top: 0;
@@ -39,7 +40,11 @@
   padding: 0 10pt 0 10pt;
 }
 
-.goji-card--score-icon {
-  width: 30pt;
-  height: 30pt;
+.goji-card__score-icon {
+  width: 40pt;
+  height: 40pt;
+}
+
+.goji-card__score-number {
+  font-size: 1.2rem;
 }

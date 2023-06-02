@@ -21,5 +21,5 @@ const typeToIcon = (type: BerryType) => {
 }
 
 export const Berry = (props: { type: BerryType }) => {
-  return <img src={typeToIcon(props.type)} className="goji-card--score-icon" />
+  return <img src={typeToIcon(props.type)} className="goji-card__score-icon" />
 }

@@ -1,4 +1,4 @@
-import { Link, Stack } from "@mui/material"
+import { Box, Container, Link, Stack } from "@mui/material"
 import LinearProgress from "@mui/material/LinearProgress"
 import Grid from "@mui/material/Unstable_Grid2"
 
@@ -15,7 +15,7 @@ const extractCategoryValues = (categoryValues: Map<Category, number>) => {
   categoryValues.forEach((value, category) => {
     output.push(
       <Grid container spacing={0}>
-        <Grid xs={"auto"}>{category}</Grid>
+        <Grid xs={"auto"}><b>{category}</b></Grid>
         <Grid xs></Grid>
         <Grid xs={"auto"}>{value}%tile</Grid>
         <Grid xs={12}>
@@ -54,12 +54,17 @@ const printBerries = (score: number) => {
 export const Score = (props: { data: BrandData }): JSX.Element => {
   return (
     <>
-      <h1>Goji Score</h1>
-      <h2>{props.data.name}</h2>
-      <Stack direction={"row"} spacing={2}>
-        {printBerries(props.data.total)}
-      </Stack>
+      <h1>{props.data.name}</h1>
       <Stack spacing={2}>
+        {/* Goji Berries */}
+        <Stack alignItems={"center"} spacing={0} sx={{marginBottom: "-15pt"}}>
+          <Stack direction={"row"} spacing={2}>
+            {printBerries(props.data.total)}
+          </Stack>
+          <p className="goji-card__score-number">{((props.data.total / 100) * 5).toPrecision(2)} / 5</p>
+        </Stack>
+
+        {/* Score Breakdown */}
         {extractCategoryValues(props.data.categoryValues)}
 
         {/* More Info Link */}
