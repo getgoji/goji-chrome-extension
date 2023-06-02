@@ -2,8 +2,12 @@ import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
 import Settings from "@mui/icons-material/Settings"
 import Star from "@mui/icons-material/Star"
-import { ScopedCssBaseline, Tab, Tabs } from "@mui/material"
-import cssText from "data-text:./card.css"
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  ScopedCssBaseline
+} from "@mui/material"
+import cssText from "data-text:./styles.css"
 import type {
   PlasmoCSConfig,
   PlasmoCSUIJSXContainer,
@@ -13,33 +17,71 @@ import type {
 import { type SyntheticEvent, useState } from "react"
 import { createRoot } from "react-dom/client"
 
-import { brandData } from "./data"
-import { SettingsPage } from "./settings"
+import { useStorage } from "@plasmohq/storage/hook"
+
+import { brandData } from "~components/data"
+import { categories } from "~components/data"
+import type { Category } from "~components/data"
+import { Score } from "~components/score"
+import { SettingsPage } from "~components/settings"
 
 // The Card itself
 const GojiCard = (): JSX.Element => {
-  const [tab, setTab] = useState(1)
+  // Tab states
+  const [tab, setTab] = useState(0)
+
+  // Category storage
+  const [categoryWeights, setCategoryWeights] = useStorage(
+    "gojiCategoryWeights",
+    (stored) => (stored === undefined ? defaultCategoryWeightsMap() : stored)
+  )
 
   return (
     <div className="goji-card__host">
       {/* Card Content */}
       <div className="goji-card__content">
         {/* Brand Goji Score */}
-        {tab === 0 && <div>{brandData().name}</div>}
+        {tab === 0 && (
+          <Score data={brandData()} categoryWeights={categoryWeights} />
+        )}
 
         {/* Settings */}
-        {tab === 1 && <SettingsPage />}
+        {tab === 1 && (
+          <SettingsPage
+            categoryWeights={categoryWeights}
+            setCategoryWeights={setCategoryWeights}
+          />
+        )}
       </div>
 
-      <Tabs
+      <BottomNavigation
+        showLabels
+        className="goji-card__nav"
         value={tab}
-        onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}
-        variant="fullWidth">
-        <Tab icon={<Star />} label="Score" value={0} />
-        <Tab icon={<Settings />} label="Settings" value={1} />
-      </Tabs>
+        onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}>
+        <BottomNavigationAction icon={<Star />} label="Score" value={0} />
+        <BottomNavigationAction
+          icon={<Settings />}
+          label="Settings"
+          value={1}
+        />
+      </BottomNavigation>
     </div>
   )
+}
+
+// Category weights
+/**
+ * Genereate default category weights map for storage
+ * @returns Default category weights map
+ */
+const defaultCategoryWeightsMap = (): Map<Category, number> => {
+  const map = new Map<Category, number>()
+  categories.forEach((category) => {
+    map.set(category, 1)
+  })
+
+  return map
 }
 
 // Custom render with CSS cache

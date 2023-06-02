@@ -10,14 +10,9 @@ export const categories = [
 ]
 export type Category = (typeof categories)[number]
 
-interface BrandData {
+export interface BrandData {
   name: string
-  carbonEmissions: number
-  waterUsage: number
-  ethicalSourcing: number
-  laborRights: number
-  transparency: number
-  dei: number
+  categoryValues: Map<Category, number>
   total: number
   moreInfo: string
   url: string
@@ -35,17 +30,19 @@ export const brandData = (): BrandData => {
       // Extract the rest of the brand data
       const lineSplit = line.split(",")
 
+      // Create the brand data (empty category values)
       data = {
         name: lineSplit[0],
-        carbonEmissions: parseFloat(lineSplit[1]),
-        waterUsage: parseFloat(lineSplit[2]),
-        ethicalSourcing: parseFloat(lineSplit[3]),
-        laborRights: parseFloat(lineSplit[4]),
-        transparency: parseFloat(lineSplit[5]),
-        dei: parseFloat(lineSplit[6]),
+        categoryValues: new Map<Category, number>(),
         total: parseFloat(lineSplit[7]),
         moreInfo: lineSplit[8],
         url: urlPattern
+      }
+
+      // Fill in the category values
+      for (let i = 0; i < categories.length; i++) {
+        // lineSplit[i + 1] = the value of the category
+        data.categoryValues.set(categories[i], parseFloat(lineSplit[i + 1]))
       }
 
       // Stop searching
