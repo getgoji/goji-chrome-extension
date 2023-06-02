@@ -7,7 +7,7 @@ import {
   BottomNavigationAction,
   ScopedCssBaseline
 } from "@mui/material"
-import cssText from "data-text:./card.css"
+import cssText from "data-text:./styles.css"
 import type {
   PlasmoCSConfig,
   PlasmoCSUIJSXContainer,
