@@ -2,7 +2,11 @@ import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
 import Settings from "@mui/icons-material/Settings"
 import Star from "@mui/icons-material/Star"
-import { ScopedCssBaseline, Tab, Tabs } from "@mui/material"
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  ScopedCssBaseline
+} from "@mui/material"
 import cssText from "data-text:./card.css"
 import type {
   PlasmoCSConfig,
@@ -32,13 +36,17 @@ const GojiCard = (): JSX.Element => {
         {tab === 1 && <SettingsPage />}
       </div>
 
-      <Tabs
+      <BottomNavigation
+        showLabels
         value={tab}
-        onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}
-        variant="fullWidth">
-        <Tab icon={<Star />} label="Score" value={0} />
-        <Tab icon={<Settings />} label="Settings" value={1} />
-      </Tabs>
+        onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}>
+        <BottomNavigationAction icon={<Star />} label="Score" value={0} />
+        <BottomNavigationAction
+          icon={<Settings />}
+          label="Settings"
+          value={1}
+        />
+      </BottomNavigation>
     </div>
   )
 }

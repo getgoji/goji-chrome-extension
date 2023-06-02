@@ -13,7 +13,7 @@ const extractCategoryValues = (categoryValues: Map<Category, number>) => {
     output.push(
       <>
         <p>
-          {category} : {value}
+          {category}: {value}
         </p>
         <LinearProgress variant="determinate" value={value} />
       </>
