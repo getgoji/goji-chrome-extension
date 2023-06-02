@@ -1,8 +1,8 @@
+import { Link, Stack } from "@mui/material"
 import LinearProgress from "@mui/material/LinearProgress"
 import Grid from "@mui/material/Unstable_Grid2"
 
 import type { BrandData, Category } from "./data"
-import { Stack } from "@mui/material"
 
 /**
  * Extract category values and return them as components
@@ -33,6 +33,14 @@ export const Score = (props: { data: BrandData }): JSX.Element => {
       <h2>{props.data.name}</h2>
       <Stack spacing={2}>
         {extractCategoryValues(props.data.categoryValues)}
+
+        {/* More Info Link */}
+        <Link
+          href={props.data.moreInfo}
+          target="_blank"
+          rel="noopener noreferrer">
+          More Info
+        </Link>
       </Stack>
     </>
   )
