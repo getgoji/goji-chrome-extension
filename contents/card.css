@@ -28,6 +28,13 @@
   bottom: 0;
 }
 
+.goji-card__nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 .goji-card__content {
-  padding: 10pt;
+  padding: 0 10pt 0 10pt;
 }

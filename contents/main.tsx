@@ -38,6 +38,7 @@ const GojiCard = (): JSX.Element => {
 
       <BottomNavigation
         showLabels
+        className="goji-card__nav"
         value={tab}
         onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}>
         <BottomNavigationAction icon={<Star />} label="Score" value={0} />
