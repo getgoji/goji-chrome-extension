@@ -25,6 +25,7 @@ export const SettingsPage = (props: {
                 <TextField
                   type="number"
                   inputProps={{ min: 1 }}
+                  defaultValue={1}
                   value={props.categoryWeights[category]}
                   onChange={(event) =>
                     props.setCategoryWeights({
