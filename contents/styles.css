@@ -3,30 +3,58 @@
   position: fixed;
   z-index: 9999999;
 
-  /* Move to right side (and down-ish) */
+  /* Place in bottom right */
   margin-left: auto;
   margin-top: auto;
   margin-right: 5rem;
   margin-bottom: 5rem;
-  transition: margin-right 0.25s;
 
   /* Color */
   background-color: #ffc4bc;
-  border-radius: 10pt;
   border-color: black;
   border-width: 2pt;
   border-style: solid;
   overflow: hidden;
-
-  /* Define size */
-  width: 23rem;
-  height: 35rem;
 
   /* Stretches to fill entire region */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+
+  /* Transitions */
+  transition: all 0.25s;
+}
+
+.goji-card__host--open {
+  border-radius: 10pt;
+  width: 275pt;
+  height: 450pt;
+  margin-right: 5rem;
+  margin-bottom: 5rem;
+  cursor: auto;
+}
+
+.goji-card__host--closed {
+  border-radius: 50pt;
+  width: 50pt;
+  height: 50pt;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.goji-card__logo {
+  margin: auto;
+  width: 35pt;
+  height: 35pt;
+}
+
+.goji-card__close-button {
+  position: absolute;
+  z-index: 99999999;
 }
 
 .goji-card__nav {
@@ -36,6 +64,7 @@
   right: 0;
 }
 
+.goji-card__header,
 .goji-card__content {
   padding: 0 10pt 0 10pt;
 }
@@ -47,4 +76,8 @@
 
 .goji-card__score-number {
   font-size: 1.2rem;
+}
+
+.goji-card__category {
+  font-size: 1.1rem;
 }

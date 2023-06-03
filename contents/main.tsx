@@ -1,12 +1,14 @@
 import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
-import Settings from "@mui/icons-material/Settings"
-import Star from "@mui/icons-material/Star"
+import { Close, Settings, Star } from "@mui/icons-material"
 import {
   BottomNavigation,
   BottomNavigationAction,
+  IconButton,
   ScopedCssBaseline
 } from "@mui/material"
+import Grid from "@mui/material/Unstable_Grid2"
+import gojiTabIcon from "data-base64:~icons/goji-title.png"
 import cssText from "data-text:./styles.css"
 import type {
   PlasmoCSConfig,
@@ -27,8 +29,10 @@ import { SettingsPage } from "~components/settings"
 
 // The Card itself
 const GojiCard = (): JSX.Element => {
-  // Tab states
+  // States
+  const [isOpen, setIsOpen] = useState(false)
   const [tab, setTab] = useState(0)
+  const data = brandData()
 
   // Category storage
   const [categoryWeights, setCategoryWeights] = useStorage(
@@ -37,35 +41,64 @@ const GojiCard = (): JSX.Element => {
   )
 
   return (
-    <div className="goji-card__host">
-      {/* Card Content */}
-      <div className="goji-card__content">
-        {/* Brand Goji Score */}
-        {tab === 0 && (
-          <Score data={brandData()} categoryWeights={categoryWeights} />
-        )}
+    <div
+      className={
+        "goji-card__host " +
+        (isOpen ? "goji-card__host--open" : "goji-card__host--closed")
+      }
+      onClick={() => {
+        if (!isOpen) {
+          setIsOpen(true)
+        }
+      }}>
+      {isOpen && (
+        <>
+          <Grid container className="goji-card__header" alignItems={"center"}>
+            <Grid xs>
+              <h2>{tab === 0 ? data.name : "Category Weights"}</h2>
+            </Grid>
+            <Grid xs={"auto"}>
+              <IconButton aria-label="delete" onClick={() => setIsOpen(false)}>
+                <Close />
+              </IconButton>
+            </Grid>
+          </Grid>
 
-        {/* Settings */}
-        {tab === 1 && (
-          <SettingsPage
-            categoryWeights={categoryWeights}
-            setCategoryWeights={setCategoryWeights}
-          />
-        )}
-      </div>
+          {/* Card Content */}
+          <div className="goji-card__content">
+            {/* Brand Goji Score */}
+            {tab === 0 && (
+              <Score data={brandData()} categoryWeights={categoryWeights} />
+            )}
 
-      <BottomNavigation
-        showLabels
-        className="goji-card__nav"
-        value={tab}
-        onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}>
-        <BottomNavigationAction icon={<Star />} label="Score" value={0} />
-        <BottomNavigationAction
-          icon={<Settings />}
-          label="Settings"
-          value={1}
-        />
-      </BottomNavigation>
+            {/* Settings */}
+            {tab === 1 && (
+              <SettingsPage
+                categoryWeights={categoryWeights}
+                setCategoryWeights={setCategoryWeights}
+              />
+            )}
+          </div>
+
+          <BottomNavigation
+            showLabels
+            className="goji-card__nav"
+            value={tab}
+            onChange={(_: SyntheticEvent, newValue: number) =>
+              setTab(newValue)
+            }>
+            <BottomNavigationAction icon={<Star />} label="Score" value={0} />
+            <BottomNavigationAction
+              icon={<Settings />}
+              label="Settings"
+              value={1}
+            />
+          </BottomNavigation>
+        </>
+      )}
+      {!isOpen && (
+        <img src={gojiTabIcon} alt="Goji Logo" className="goji-card__logo" />
+      )}
     </div>
   )
 }

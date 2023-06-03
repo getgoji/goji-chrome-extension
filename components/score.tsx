@@ -2,6 +2,8 @@ import { Link, Stack } from "@mui/material"
 import LinearProgress from "@mui/material/LinearProgress"
 import Grid from "@mui/material/Unstable_Grid2"
 
+import { useStorage } from "@plasmohq/storage/hook"
+
 import { Berry } from "./berry"
 import { type BrandData, type Category } from "./data"
 
@@ -13,22 +15,20 @@ export const Score = (props: {
   let totalWeight = 0
   let score = 0
   props.data.categoryValues.forEach((value, category) => {
-    console.log("===")
+    let weight = parseFloat(props.categoryWeights[category])
 
-    const weight = parseFloat(props.categoryWeights[category])
-    console.log("Weight: " + weight)
+    // Fix undefined
+    if (isNaN(weight)) {
+      weight = 1
+    }
 
     totalWeight += weight
-    console.log("Total Weight: " + totalWeight)
-
     score += weight * value
-    console.log("Score: " + score)
   })
   score /= totalWeight
 
   return (
     <>
-      <h1>{props.data.name}</h1>
       <Stack spacing={2}>
         {/* Goji Berries */}
         <Stack alignItems={"center"} spacing={0} sx={{ marginBottom: "-15pt" }}>
@@ -90,13 +90,13 @@ const printBerries = (score: number) => {
   // Add 5 berries based on score
   for (let i = 0; i < 5; i++) {
     if (score > 20) {
-      output.push(<Berry type="full" />)
+      output.push(<Berry type="full" key={i} />)
       score -= 20
     } else if (score > 10) {
-      output.push(<Berry type="half" />)
+      output.push(<Berry type="half" key={i} />)
       score -= 10
     } else {
-      output.push(<Berry type="sad" />)
+      output.push(<Berry type="sad" key={i} />)
     }
   }
 
