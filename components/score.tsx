@@ -13,16 +13,9 @@ export const Score = (props: {
   let totalWeight = 0
   let score = 0
   props.data.categoryValues.forEach((value, category) => {
-    console.log("===")
-
     const weight = parseFloat(props.categoryWeights[category])
-    console.log("Weight: " + weight)
-
     totalWeight += weight
-    console.log("Total Weight: " + totalWeight)
-
     score += weight * value
-    console.log("Score: " + score)
   })
   score /= totalWeight
 
