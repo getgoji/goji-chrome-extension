@@ -21,7 +21,7 @@ export const Score = (props: {
     if (isNaN(weight)) {
       weight = 1
     }
-    
+
     totalWeight += weight
     score += weight * value
   })
@@ -90,13 +90,13 @@ const printBerries = (score: number) => {
   // Add 5 berries based on score
   for (let i = 0; i < 5; i++) {
     if (score > 20) {
-      output.push(<Berry type="full" key={i}/>)
+      output.push(<Berry type="full" key={i} />)
       score -= 20
     } else if (score > 10) {
-      output.push(<Berry type="half" key={i}/>)
+      output.push(<Berry type="half" key={i} />)
       score -= 10
     } else {
-      output.push(<Berry type="sad" key={i}/>)
+      output.push(<Berry type="sad" key={i} />)
     }
   }
 
