@@ -27,7 +27,10 @@ import type { Category } from "~components/data"
 import { Score } from "~components/score"
 import { SettingsPage } from "~components/settings"
 
-// The Card itself
+/**
+ * Goji card component
+ * @returns Goji card
+ */
 const GojiCard = (): JSX.Element => {
   // States
   const [isOpen, setIsOpen] = useState(false)
@@ -103,7 +106,6 @@ const GojiCard = (): JSX.Element => {
   )
 }
 
-// Category weights
 /**
  * Genereate default category weights map for storage
  * @returns Default category weights map
@@ -117,7 +119,10 @@ const defaultCategoryWeightsMap = (): Map<Category, number> => {
   return map
 }
 
-// Custom render with CSS cache
+/**
+ * Custom render with CSS cache
+ * @param param0 Plasmo render
+ */
 export const render: PlasmoRender<PlasmoCSUIJSXContainer> = async ({
   anchor,
   createRootContainer

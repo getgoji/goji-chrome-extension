@@ -21,6 +21,18 @@ You can install the extension from the [Chrome Web Store](https://chrome.google.
 6. Click the Load unpacked button, navigate to the `build` subdirectory of the code, and select the build folder.
 7. Navigate to your favorite brand's website and see how they rank on Goji!
 
+# Repo Organization
+
+| Directory    | What it does                                                             |
+| ------------ | ------------------------------------------------------------------------ |
+| `assets`     | Extension icon                                                           |
+| `components` | React components injected                                                |
+| `contents`   | Extension "content" scripts (what is injected and ran on brand websites) |
+| `icons`      | Image assets used                                                        |
+
+- `main.tsx` is the entry point. It is ran on each matching brand website
+- All extra CSS is in `styles.css`
+
 # Credits
 
 Extension code: Andrew Kuhn & Kenneth Yang
