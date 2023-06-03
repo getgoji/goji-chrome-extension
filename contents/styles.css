@@ -28,17 +28,17 @@
 
 .goji-card__host--open {
   border-radius: 10pt;
-  width: 23rem;
-  height: 35rem;
+  width: 275pt;
+  height: 450pt;
   margin-right: 5rem;
   margin-bottom: 5rem;
   cursor: auto;
 }
 
 .goji-card__host--closed {
-  border-radius: 3rem;
-  width: 4rem;
-  height: 4rem;
+  border-radius: 50pt;
+  width: 50pt;
+  height: 50pt;
   margin-right: 2rem;
   margin-bottom: 2rem;
   cursor: pointer;
