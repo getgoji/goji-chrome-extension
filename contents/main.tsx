@@ -1,15 +1,14 @@
 import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
-import { Remove, Settings, Star } from "@mui/icons-material"
+import { Close, Settings, Star } from "@mui/icons-material"
 import {
   BottomNavigation,
   BottomNavigationAction,
-  Box,
   IconButton,
-  ScopedCssBaseline,
-  Stack
+  ScopedCssBaseline
 } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2"
+import gojiTabIcon from "data-base64:~icons/goji-title.png"
 import cssText from "data-text:./styles.css"
 import type {
   PlasmoCSConfig,
@@ -31,7 +30,7 @@ import { SettingsPage } from "~components/settings"
 // The Card itself
 const GojiCard = (): JSX.Element => {
   // States
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const [tab, setTab] = useState(0)
   const data = brandData()
 
@@ -60,7 +59,7 @@ const GojiCard = (): JSX.Element => {
             </Grid>
             <Grid xs={"auto"}>
               <IconButton aria-label="delete" onClick={() => setIsOpen(false)}>
-                <Remove />
+                <Close />
               </IconButton>
             </Grid>
           </Grid>
@@ -96,6 +95,9 @@ const GojiCard = (): JSX.Element => {
             />
           </BottomNavigation>
         </>
+      )}
+      {!isOpen && (
+        <img src={gojiTabIcon} alt="Goji Logo" className="goji-card__logo" />
       )}
     </div>
   )
