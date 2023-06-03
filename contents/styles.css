@@ -3,30 +3,43 @@
   position: fixed;
   z-index: 9999999;
 
-  /* Move to right side (and down-ish) */
+  /* Place in bottom right */
   margin-left: auto;
   margin-top: auto;
   margin-right: 5rem;
   margin-bottom: 5rem;
-  transition: margin-right 0.25s;
 
   /* Color */
   background-color: #ffc4bc;
-  border-radius: 10pt;
   border-color: black;
   border-width: 2pt;
   border-style: solid;
   overflow: hidden;
-
-  /* Define size */
-  width: 23rem;
-  height: 35rem;
 
   /* Stretches to fill entire region */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+
+  /* Transitions */
+  transition: all 0.25s;
+}
+
+.goji-card__host--open {
+  border-radius: 10pt;
+  width: 23rem;
+  height: 35rem;
+  margin-right: 5rem;
+  margin-bottom: 5rem;
+}
+
+.goji-card__host--closed {
+  border-radius: 3rem;
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 .goji-card__nav {

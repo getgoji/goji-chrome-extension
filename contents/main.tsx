@@ -27,7 +27,8 @@ import { SettingsPage } from "~components/settings"
 
 // The Card itself
 const GojiCard = (): JSX.Element => {
-  // Tab states
+  // States
+  const [isOpen, setIsOpen] = useState(false)
   const [tab, setTab] = useState(0)
 
   // Category storage
@@ -37,35 +38,50 @@ const GojiCard = (): JSX.Element => {
   )
 
   return (
-    <div className="goji-card__host">
-      {/* Card Content */}
-      <div className="goji-card__content">
-        {/* Brand Goji Score */}
-        {tab === 0 && (
-          <Score data={brandData()} categoryWeights={categoryWeights} />
-        )}
+    <div
+      className={
+        "goji-card__host " +
+        (isOpen ? "goji-card__host--open" : "goji-card__host--closed")
+      }
+      onClick={() => {
+        if (!isOpen) {
+          setIsOpen(true)
+        }
+      }}>
+      {isOpen && (
+        <>
+          {/* Card Content */}
+          <div className="goji-card__content">
+            {/* Brand Goji Score */}
+            {tab === 0 && (
+              <Score data={brandData()} categoryWeights={categoryWeights} />
+            )}
 
-        {/* Settings */}
-        {tab === 1 && (
-          <SettingsPage
-            categoryWeights={categoryWeights}
-            setCategoryWeights={setCategoryWeights}
-          />
-        )}
-      </div>
+            {/* Settings */}
+            {tab === 1 && (
+              <SettingsPage
+                categoryWeights={categoryWeights}
+                setCategoryWeights={setCategoryWeights}
+              />
+            )}
+          </div>
 
-      <BottomNavigation
-        showLabels
-        className="goji-card__nav"
-        value={tab}
-        onChange={(_: SyntheticEvent, newValue: number) => setTab(newValue)}>
-        <BottomNavigationAction icon={<Star />} label="Score" value={0} />
-        <BottomNavigationAction
-          icon={<Settings />}
-          label="Settings"
-          value={1}
-        />
-      </BottomNavigation>
+          <BottomNavigation
+            showLabels
+            className="goji-card__nav"
+            value={tab}
+            onChange={(_: SyntheticEvent, newValue: number) =>
+              setTab(newValue)
+            }>
+            <BottomNavigationAction icon={<Star />} label="Score" value={0} />
+            <BottomNavigationAction
+              icon={<Settings />}
+              label="Settings"
+              value={1}
+            />
+          </BottomNavigation>
+        </>
+      )}
     </div>
   )
 }
