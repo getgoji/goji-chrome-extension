@@ -18,6 +18,10 @@ export interface BrandData {
   url: string
 }
 
+/**
+ * Detect the brand website and get the data for the brand
+ * @returns BrandData for the current brand website
+ */
 export const brandData = (): BrandData => {
   let data: BrandData
 

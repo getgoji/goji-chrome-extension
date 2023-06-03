@@ -7,6 +7,11 @@ import { useStorage } from "@plasmohq/storage/hook"
 import { Berry } from "./berry"
 import { type BrandData, type Category } from "./data"
 
+/**
+ * Compute and render the Goji Score and category breakdown for a given brand
+ * @param props Brand data to display and the category weights
+ * @returns Score component
+ */
 export const Score = (props: {
   data: BrandData
   categoryWeights: Map<Category, number>

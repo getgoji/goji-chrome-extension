@@ -20,6 +20,11 @@ const typeToIcon = (type: BerryType) => {
   }
 }
 
+/**
+ * Create a berry icon of the given type for the Goji Score
+ * @param props Berry type
+ * @returns Berry icon for Goji Score
+ */
 export const Berry = (props: { type: BerryType }) => {
   return <img src={typeToIcon(props.type)} className="goji-card__score-icon" />
 }

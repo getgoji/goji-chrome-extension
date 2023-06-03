@@ -5,8 +5,9 @@ import type { Category } from "./data"
 import { categories } from "./data"
 
 /**
- * Settings page
- * @returns Settings page
+ * Settings page component
+ * @param props Category weights and setter
+ * @returns Settings page component
  */
 export const SettingsPage = (props: {
   categoryWeights: Map<Category, number>
