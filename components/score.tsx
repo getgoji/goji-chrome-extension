@@ -21,7 +21,6 @@ export const Score = (props: {
 
   return (
     <>
-      <h1>{props.data.name}</h1>
       <Stack spacing={2}>
         {/* Goji Berries */}
         <Stack alignItems={"center"} spacing={0} sx={{ marginBottom: "-15pt" }}>

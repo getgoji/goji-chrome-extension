@@ -14,8 +14,6 @@ export const SettingsPage = (props: {
 }): JSX.Element => {
   return (
     <>
-      <h2>Category Weights</h2>
-
       <Grid container spacing={1}>
         {categories.map((category) => {
           return (

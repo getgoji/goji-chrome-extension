@@ -1,12 +1,15 @@
 import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
-import Settings from "@mui/icons-material/Settings"
-import Star from "@mui/icons-material/Star"
+import { Remove, Settings, Star } from "@mui/icons-material"
 import {
   BottomNavigation,
   BottomNavigationAction,
-  ScopedCssBaseline
+  Box,
+  IconButton,
+  ScopedCssBaseline,
+  Stack
 } from "@mui/material"
+import Grid from "@mui/material/Unstable_Grid2"
 import cssText from "data-text:./styles.css"
 import type {
   PlasmoCSConfig,
@@ -28,8 +31,9 @@ import { SettingsPage } from "~components/settings"
 // The Card itself
 const GojiCard = (): JSX.Element => {
   // States
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
   const [tab, setTab] = useState(0)
+  const data = brandData()
 
   // Category storage
   const [categoryWeights, setCategoryWeights] = useStorage(
@@ -50,6 +54,17 @@ const GojiCard = (): JSX.Element => {
       }}>
       {isOpen && (
         <>
+          <Grid container className="goji-card__header" alignItems={"center"}>
+            <Grid xs>
+              <h2>{tab === 0 ? data.name : "Category Weights"}</h2>
+            </Grid>
+            <Grid xs={"auto"}>
+              <IconButton aria-label="delete" onClick={() => setIsOpen(false)}>
+                <Remove />
+              </IconButton>
+            </Grid>
+          </Grid>
+
           {/* Card Content */}
           <div className="goji-card__content">
             {/* Brand Goji Score */}

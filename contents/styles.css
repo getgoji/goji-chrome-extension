@@ -42,6 +42,11 @@
   margin-bottom: 2rem;
 }
 
+.goji-card__close-button {
+  position: absolute;
+  z-index: 99999999;
+}
+
 .goji-card__nav {
   position: absolute;
   bottom: 0;
@@ -49,6 +54,7 @@
   right: 0;
 }
 
+.goji-card__header,
 .goji-card__content {
   padding: 0 10pt 0 10pt;
 }
