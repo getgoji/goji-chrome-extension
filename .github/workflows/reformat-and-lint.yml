@@ -17,12 +17,12 @@ jobs:
 
     steps:
       - name: 🛎 Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.WORKFLOW_COMMIT }}
 
       - name: 📦 Setup Node.js and caching
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: latest
           cache: "npm"
@@ -38,6 +38,6 @@ jobs:
 
       - name: ⬆️ Commit changes
         if: github.ref != 'refs/heads/main'
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Reformat and Lint
