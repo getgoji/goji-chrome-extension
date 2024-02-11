@@ -10,18 +10,16 @@ on:
 
 jobs:
   reformat-and-lint:
+    if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: 🛎 Checkout
-        if: github.event.pull_request.user.login != 'dependabot[bot]'
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.WORKFLOW_COMMIT }}
-
-      - name: 🛎🤖 Bot Checkout
-        if: github.event.pull_request.user.login == 'dependabot[bot]'
-        uses: actions/checkout@v3
 
       - name: 📦 Setup Node.js and caching
         uses: actions/setup-node@v3
@@ -39,7 +37,7 @@ jobs:
         run: npx eslint .
 
       - name: ⬆️ Commit changes
-        if: github.event.pull_request.user.login != 'dependabot[bot]'
+        if: github.ref != 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Reformat and Lint
